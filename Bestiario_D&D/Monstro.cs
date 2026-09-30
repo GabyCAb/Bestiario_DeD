@@ -4,15 +4,15 @@ namespace Bestiario_D_D
 {
     public class Monstro
     {
-        public string Nome { get; set; }
-        public int ClasseDeArmadura { get; set; }
-        public int PontosDeVida { get; set; }
-        public double Deslocamento { get; set; }
-        public int Forca { get; set; }
-        public int Destreza { get; set; }
-        public double NivelDeDesafio { get; set; }
-        public TipoCriatura Tipo { get; set; }
-        public Tamanho Tamanho { get; set; }
+        public required string Nome { get; init; }
+        public required int ClasseDeArmadura { get; init; }
+        public required int PontosDeVida { get; init; }
+        public required double Deslocamento { get; init; }
+        public required int Forca { get; init; }
+        public required int Destreza { get; init; }
+        public required double NivelDeDesafio { get; init; }
+        public required TipoCriatura Tipo { get; init; }
+        public required Tamanho Tamanho { get; init; }
 
         public int CalcularModificador(int valorAtributo)
         {

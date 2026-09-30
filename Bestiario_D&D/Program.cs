@@ -53,6 +53,7 @@ string TraduzirTipo(TipoCriatura tipo)
     };
 }
 
+//função para converter o tamanho em uma string amigável
 string TraduzirTamanho(Tamanho tamanho)
 {
     return tamanho switch
