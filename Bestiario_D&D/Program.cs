@@ -1,26 +1,42 @@
-﻿Console.WriteLine("Bem-vindo ao Bestiário!");
+﻿using Bestiario_D_D;
 
-//Escolha um monstro do Manual dos Monstros e, no Program.cs, crie variáveis para representar parte do bloco de estatísticas dele:
-// nome, Classe de Armadura, Pontos de Vida, deslocamento (em metros), o valor de Força e o Nível de Desafio.
+Console.WriteLine("Bem-vindo ao Bestiário!");
+Console.WriteLine();
 
-string nome = "Magmin";
-int classeDeArmadura = 14;
-int pontosDeVida = 9;
-double deslocamento = 9.0;
-int forca = 7;
-int destreza = 15;
-double  nivelDeDesafio = 0.5;
-
-int CalcularModificador(int valorAtributo)
+var magmin = new Monstro
 {
-    int modificador = (int)Math.Floor((valorAtributo - 10) / 2.0);
-    return modificador;
+    Nome = "Magmin",
+    ClasseDeArmadura = 14,
+    PontosDeVida = 9,
+    Deslocamento = 9.0,
+    Forca = 7,
+    Destreza = 15,
+    NivelDeDesafio = 0.5
+};
+
+var senhorDasMumias = new Monstro
+{
+    Nome = "Senhor das Múmias",
+    ClasseDeArmadura = 17,
+    PontosDeVida = 97,
+    Deslocamento = 6.0,
+    Forca = 18,
+    Destreza = 10,
+    NivelDeDesafio = 15.0
+};
+
+void ExibirMonstro(Monstro monstro)
+{
+    Console.WriteLine($"Nome: {monstro.Nome}");
+    Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
+    Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
+    Console.WriteLine($"Deslocamento: {monstro.Deslocamento} metros");
+    Console.WriteLine($"Força: {monstro.Forca} (Modificador: {monstro.CalcularModificador(monstro.Forca)})");
+    Console.WriteLine($"Destreza: {monstro.Destreza} (Modificador: {monstro.CalcularModificador(monstro.Destreza)})");
+    Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio}");
 }
 
-Console.WriteLine($"Nome: {nome}");
-Console.WriteLine($"Classe de Armadura: {classeDeArmadura}");
-Console.WriteLine($"Pontos de Vida: {pontosDeVida}");
-Console.WriteLine($"Deslocamento: {deslocamento} metros");
-Console.WriteLine($"Força: {forca} ({CalcularModificador(forca):+0;-0;0})");
-Console.WriteLine($"Destreza: {destreza} ({CalcularModificador(destreza):+0;-0;0})");
-Console.WriteLine($"Nível de Desafio: {nivelDeDesafio}");
+ExibirMonstro(magmin);
+Console.WriteLine();
+ExibirMonstro(senhorDasMumias);
+
