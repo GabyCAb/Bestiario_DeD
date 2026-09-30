@@ -11,6 +11,8 @@ namespace Bestiario_D_D
         public int Forca { get; set; }
         public int Destreza { get; set; }
         public double NivelDeDesafio { get; set; }
+        public TipoCriatura Tipo { get; set; }
+        public Tamanho Tamanho { get; set; }
 
         public int CalcularModificador(int valorAtributo)
         {

@@ -11,7 +11,9 @@ var magmin = new Monstro
     Deslocamento = 9.0,
     Forca = 7,
     Destreza = 15,
-    NivelDeDesafio = 0.5
+    NivelDeDesafio = 0.5,
+    Tipo = TipoCriatura.Elemental,
+    Tamanho = Tamanho.Pequeno
 };
 
 var senhorDasMumias = new Monstro
@@ -22,7 +24,9 @@ var senhorDasMumias = new Monstro
     Deslocamento = 6.0,
     Forca = 18,
     Destreza = 10,
-    NivelDeDesafio = 15.0
+    NivelDeDesafio = 15.0,
+    Tipo = TipoCriatura.MortoVivo,
+    Tamanho = Tamanho.Medio
 };
 
 void ExibirMonstro(Monstro monstro)
@@ -31,9 +35,32 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
     Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
     Console.WriteLine($"Deslocamento: {monstro.Deslocamento} metros");
-    Console.WriteLine($"Força: {monstro.Forca} (Modificador: {monstro.CalcularModificador(monstro.Forca)})");
-    Console.WriteLine($"Destreza: {monstro.Destreza} (Modificador: {monstro.CalcularModificador(monstro.Destreza)})");
+    Console.WriteLine($"Força: {monstro.Forca} ({monstro.CalcularModificador(monstro.Forca):+0;-0;0})");
+    Console.WriteLine($"Destreza: {monstro.Destreza} ({monstro.CalcularModificador(monstro.Destreza):+0;-0;0})");
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio}");
+    Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
+}
+
+//funçao para converter o tipo de criatura em uma string amigável
+string TraduzirTipo(TipoCriatura tipo)
+{
+    return tipo switch
+    {
+        TipoCriatura.Aberracao => "Aberração",
+        TipoCriatura.Dragao => "Dragão",
+        TipoCriatura.MortoVivo => "Morto-Vivo",
+        _ => tipo.ToString()
+    };
+}
+
+string TraduzirTamanho(Tamanho tamanho)
+{
+    return tamanho switch
+    {
+        Tamanho.Miudo => "Miúdo",
+        Tamanho.Medio => "Médio",
+        _ => tamanho.ToString()
+    };
 }
 
 ExibirMonstro(magmin);
