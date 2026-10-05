@@ -3,31 +3,29 @@
 Console.WriteLine("Bem-vindo ao Bestiário!");
 Console.WriteLine();
 
-var magmin = new Monstro
-{
-    Nome = "Magmin",
-    ClasseDeArmadura = 14,
-    PontosDeVida = 9,
-    Deslocamento = 9.0,
-    Forca = 7,
-    Destreza = 15,
-    NivelDeDesafio = 0.5,
-    Tipo = TipoCriatura.Elemental,
-    Tamanho = Tamanho.Pequeno
-};
+var magmin = new Monstro(
+    "Magmin",
+    14,
+    9,
+    9.0,
+    7,
+    15,
+    0.5,
+    TipoCriatura.Elemental,
+    Tamanho.Pequeno
+);
 
-var senhorDasMumias = new Monstro
-{
-    Nome = "Senhor das Múmias",
-    ClasseDeArmadura = 17,
-    PontosDeVida = 97,
-    Deslocamento = 6.0,
-    Forca = 18,
-    Destreza = 10,
-    NivelDeDesafio = 15.0,
-    Tipo = TipoCriatura.MortoVivo,
-    Tamanho = Tamanho.Medio
-};
+var senhorDasMumias = new Monstro(
+    "Senhor das Múmias",
+    17,
+    97,
+    6.0,
+    18,
+    10,
+    15.0,
+    TipoCriatura.MortoVivo,
+    Tamanho.Medio
+);
 
 void ExibirMonstro(Monstro monstro)
 {
