@@ -33,8 +33,8 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
     Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
     Console.WriteLine($"Deslocamento: {monstro.Deslocamento} metros");
-    Console.WriteLine($"Força: {monstro.Forca} ({monstro.CalcularModificador(monstro.Forca):+0;-0;0})");
-    Console.WriteLine($"Destreza: {monstro.Destreza} ({monstro.CalcularModificador(monstro.Destreza):+0;-0;0})");
+    Console.WriteLine($"Força: {monstro.Forca} ({monstro.ModificadorForca:+0;-0;0})");
+    Console.WriteLine($"Destreza: {monstro.Destreza} ({monstro.ModificadorDestreza:+0;-0;0})");
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio}");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }

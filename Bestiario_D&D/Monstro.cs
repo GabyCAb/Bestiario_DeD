@@ -14,6 +14,9 @@ namespace Bestiario_D_D
         public TipoCriatura Tipo { get; }
         public Tamanho Tamanho { get; }
 
+        public int ModificadorForca => CalcularModificador(Forca);
+        public int ModificadorDestreza => CalcularModificador(Destreza);
+
         public Monstro(
             string nome,
             int classeDeArmadura,
@@ -71,7 +74,7 @@ namespace Bestiario_D_D
             Tamanho = tamanho;
         }
 
-        public int CalcularModificador(int valorAtributo)
+        private static int CalcularModificador(int valorAtributo)
         {
             int modificador = (int)Math.Floor((valorAtributo - 10) / 2.0);
             return modificador;
