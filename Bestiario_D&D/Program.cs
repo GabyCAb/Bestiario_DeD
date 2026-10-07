@@ -9,12 +9,12 @@ var magmin = new Monstro(
     pontosDeVida: 9,
     deslocamento: 9.0,
     atributos: new Atributos(
-        Forca: 7,
-        Destreza: 15,
-        Constituicao: 12,
-        Inteligencia: 8,
-        Sabedoria: 11,
-        Carisma: 10),
+        forca: 7,
+        destreza: 15,
+        constituicao: 12,
+        inteligencia: 8,
+        sabedoria: 11,
+        carisma: 10),
     nivelDeDesafio: 0.5,
     tipo: TipoCriatura.Elemental,
     tamanho: Tamanho.Pequeno
@@ -26,12 +26,12 @@ var senhorDasMumias = new Monstro(
     pontosDeVida: 97,
     deslocamento: 6.0,
     atributos: new Atributos(
-        Forca: 18,
-        Destreza: 10,
-        Constituicao: 17,
-        Inteligencia: 11,
-        Sabedoria: 18,
-        Carisma: 16),
+        forca: 18,
+        destreza: 10,
+        constituicao: 17,
+        inteligencia: 11,
+        sabedoria: 18,
+        carisma: 16),
     nivelDeDesafio: 15.0,
     tipo: TipoCriatura.MortoVivo,
     tamanho: Tamanho.Medio
@@ -80,18 +80,5 @@ ExibirMonstro(magmin);
 Console.WriteLine();
 ExibirMonstro(senhorDasMumias);
 
-Console.WriteLine();
-Console.WriteLine("=== Experimentos ===");
-
-// 1. Exibição automática
-Console.WriteLine(magmin.Atributos);
-
-// 2. Igualdade por valor
-var a1 = new Atributos(10, 10, 10, 10, 10, 10);
-var a2 = new Atributos(10, 10, 10, 10, 10, 10);
-Console.WriteLine(a1 == a2);
-
-// 3. Cópia com alteração
-var magminForte = magmin.Atributos with { Forca = 10 };
-Console.WriteLine(magminForte);
-Console.WriteLine(magmin.Atributos.Forca);
+//TESTE
+var trapaca = magmin.Atributos with { Forca = 50 };
