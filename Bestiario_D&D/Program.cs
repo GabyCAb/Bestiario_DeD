@@ -37,6 +37,35 @@ var senhorDasMumias = new Monstro(
     tamanho: Tamanho.Medio
     );
 
+var hipogrifo = new Monstro(
+    nome: "Hipogrifo",
+    classeDeArmadura: 11,
+    pontosDeVida: 19,
+    deslocamento: 12.0,
+    atributos: new Atributos(
+        forca: 17,
+        destreza: 13,
+        constituicao: 13,
+        inteligencia: 2,
+        sabedoria: 12,
+        carisma: 8),
+    nivelDeDesafio: 1.0,
+    tipo: TipoCriatura.Monstruosidade,
+    tamanho: Tamanho.Grande
+);
+
+var bestiario = new List<Monstro>();
+bestiario.Add(magmin);
+bestiario.Add(senhorDasMumias);
+bestiario.Add(hipogrifo);
+
+foreach (var monstro in bestiario)
+{
+    ExibirMonstro(monstro);
+    Console.WriteLine();
+}
+
+// FUNÇOES
 void ExibirMonstro(Monstro monstro)
 {
     Console.WriteLine($"Nome: {monstro.Nome}");
@@ -76,9 +105,9 @@ string TraduzirTamanho(Tamanho tamanho)
     };
 }
 
-ExibirMonstro(magmin);
-Console.WriteLine();
-ExibirMonstro(senhorDasMumias);
+//TESTES
 
-//TESTE
-var trapaca = magmin.Atributos with { Forca = 50 };
+Console.WriteLine($"O bestiário tem {bestiario.Count} monstros.");
+Console.WriteLine();
+
+Console.WriteLine(bestiario[5].Nome); // Deve lançar uma exceção de índice fora do intervalo
