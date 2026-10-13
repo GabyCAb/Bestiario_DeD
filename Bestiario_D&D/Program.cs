@@ -41,7 +41,7 @@ var hipogrifo = new Monstro(
     nome: "Hipogrifo",
     classeDeArmadura: 11,
     pontosDeVida: 19,
-    deslocamento: 12.0,
+    deslocamento: 12.0, //voo 18.0
     atributos: new Atributos(
         forca: 17,
         destreza: 13,
@@ -78,7 +78,7 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Inteligência: {monstro.Atributos.Inteligencia} ({monstro.Atributos.ModificadorInteligencia:+0;-0;0})");
     Console.WriteLine($"Sabedoria: {monstro.Atributos.Sabedoria} ({monstro.Atributos.ModificadorSabedoria:+0;-0;0})");
     Console.WriteLine($"Carisma: {monstro.Atributos.Carisma} ({monstro.Atributos.ModificadorCarisma:+0;-0;0})");
-    Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio}");
+    Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }
 
@@ -110,4 +110,3 @@ string TraduzirTamanho(Tamanho tamanho)
 Console.WriteLine($"O bestiário tem {bestiario.Count} monstros.");
 Console.WriteLine();
 
-Console.WriteLine(bestiario[5].Nome); // Deve lançar uma exceção de índice fora do intervalo
