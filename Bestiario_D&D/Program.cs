@@ -54,10 +54,100 @@ var hipogrifo = new Monstro(
     tamanho: Tamanho.Grande
 );
 
+var caoInfernal = new Monstro(
+    nome: "Cão Infernal",
+    classeDeArmadura: 15,
+    pontosDeVida: 45,
+    deslocamento: 15.0,
+    atributos: new Atributos(
+        forca: 17,
+        destreza: 12,
+        constituicao: 14,
+        inteligencia: 6,
+        sabedoria: 13,
+        carisma: 6),
+    nivelDeDesafio: 3.0,
+    tipo: TipoCriatura.Corruptor,
+    tamanho: Tamanho.Medio
+);
+
+var centauro = new Monstro(
+    nome: "Centauro",
+    classeDeArmadura: 12,
+    pontosDeVida: 45,
+    deslocamento: 15.0,
+    atributos: new Atributos(
+        forca: 18,
+        destreza: 14,
+        constituicao: 14,
+        inteligencia: 9,
+        sabedoria: 13,
+        carisma: 11),
+    nivelDeDesafio: 2.0,
+    tipo: TipoCriatura.Monstruosidade,
+    tamanho: Tamanho.Grande
+);
+
+var remorhaz = new Monstro(
+    nome: "Remorhaz",
+    classeDeArmadura: 17,
+    pontosDeVida: 195,
+    deslocamento: 9.0, //escavação 6.0
+    atributos: new Atributos(
+        forca: 24,
+        destreza: 13,
+        constituicao: 21,
+        inteligencia: 4,
+        sabedoria: 10,
+        carisma: 5),
+    nivelDeDesafio: 11.0,
+    tipo: TipoCriatura.Monstruosidade,
+    tamanho: Tamanho.Enorme
+);
+
+var coruja = new Monstro(
+    nome: "Coruja",
+    classeDeArmadura: 11,
+    pontosDeVida: 1,
+    deslocamento: 1.5, //voo 18.0
+    atributos: new Atributos(
+        forca: 3,
+        destreza: 13,
+        constituicao: 8,
+        inteligencia: 2,
+        sabedoria: 14,
+        carisma: 7),
+    nivelDeDesafio: 0.0,
+    tipo: TipoCriatura.Besta,
+    tamanho: Tamanho.Miudo
+);
+
+var dragaoAzulAnciao = new Monstro(
+    nome: "Dragão Azul Ancião",
+    classeDeArmadura: 22,
+    pontosDeVida: 481,
+    deslocamento: 12.0, //voo 24.0
+    atributos: new Atributos(
+        forca: 29,
+        destreza: 10,
+        constituicao: 27,
+        inteligencia: 18,
+        sabedoria: 17,
+        carisma: 21),
+    nivelDeDesafio: 23.0,
+    tipo: TipoCriatura.Dragao,
+    tamanho: Tamanho.Imenso
+);
+
 var bestiario = new List<Monstro>();
 bestiario.Add(magmin);
 bestiario.Add(senhorDasMumias);
 bestiario.Add(hipogrifo);
+bestiario.Add(caoInfernal);
+bestiario.Add(centauro);
+bestiario.Add(remorhaz);
+bestiario.Add(coruja);
+bestiario.Add(dragaoAzulAnciao);
 
 foreach (var monstro in bestiario)
 {
@@ -110,3 +200,61 @@ string TraduzirTamanho(Tamanho tamanho)
 Console.WriteLine($"O bestiário tem {bestiario.Count} monstros.");
 Console.WriteLine();
 
+foreach (var monstro in bestiario)
+{
+    if (monstro.Tamanho >= Tamanho.Grande)
+    {
+        Console.WriteLine($"O monstro {monstro.Nome} é {TraduzirTamanho(monstro.Tamanho)}.");
+    }
+    else
+    {
+        Console.WriteLine($"O monstro {monstro.Nome} não é grande nem enorme.");
+    }
+}
+
+var nomesDosGrandes = bestiario
+    .Where(m => m.Tamanho >= Tamanho.Grande)
+    .Select(m => m.Nome);
+
+foreach (var nome in nomesDosGrandes)
+{
+    Console.WriteLine(nome);
+}
+
+var ordemPorNivelDeDesafio = bestiario
+    .OrderByDescending(m => m.NivelDeDesafio)
+    .Select(m => new { m.Nome, m.NivelDeDesafio });
+foreach (var monstro in ordemPorNivelDeDesafio)
+{
+    Console.WriteLine($"O monstro {monstro.Nome} tem nível de desafio {monstro.NivelDeDesafio}.");
+}
+
+var nivelDesafioPequeno = bestiario.Count(m => m.NivelDeDesafio < 1.0);
+Console.WriteLine($"O bestiário tem {nivelDesafioPequeno} monstros com nível de desafio menor que 1.");
+
+var haMortoVivo = bestiario.Any(m => m.Tipo == TipoCriatura.MortoVivo);
+if (haMortoVivo)
+{
+    Console.WriteLine("O bestiário tem pelo menos um monstro do tipo Morto-Vivo.");
+}
+else
+{
+    Console.WriteLine("O bestiário não tem nenhum monstro do tipo Morto-Vivo.");
+}
+
+void BuscarMonstroNome (string nome)
+{
+    var monstroEncontrado = bestiario.FirstOrDefault(m => m.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+    if (monstroEncontrado != null)
+    {
+        Console.WriteLine($"Monstro encontrado: {monstroEncontrado.Nome}");
+        ExibirMonstro(monstroEncontrado);
+    }
+    else
+    {
+        Console.WriteLine($"Nenhum monstro encontrado com o nome '{nome}'.");
+    }
+}
+
+BuscarMonstroNome("Hipogrifo");
+BuscarMonstroNome("Dragão Vermelho");
