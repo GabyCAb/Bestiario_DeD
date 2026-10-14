@@ -197,64 +197,37 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-Console.WriteLine($"O bestiário tem {bestiario.Count} monstros.");
-Console.WriteLine();
+List <Monstro> encontro = new List <Monstro> { caoInfernal, caoInfernal, centauro };
 
-foreach (var monstro in bestiario)
+// calcular XP total
+int XPTotal = encontro.Sum(monstro => monstro.Experiencia);
+Console.WriteLine($"XP total do encontro: {XPTotal}");
+
+// CA média do bestiário
+double CAMedia = bestiario.Average(monstro => monstro.ClasseDeArmadura);
+Console.WriteLine($"CA média do bestiário: {CAMedia:N1}");
+
+// Mais e Menos pontos de vida
+int maxPontosDeVida = bestiario.Max(monstro => monstro.PontosDeVida);
+int minPontosDeVida = bestiario.Min(monstro => monstro.PontosDeVida);
+Console.WriteLine($"Monstro com mais pontos de vida: {bestiario.First(m => m.PontosDeVida == maxPontosDeVida).Nome} : {maxPontosDeVida}");
+Console.WriteLine($"Monstro com menos pontos de vida: {bestiario.First(m => m.PontosDeVida == minPontosDeVida).Nome} : {minPontosDeVida}");
+
+// Agrupar bestiário por tipo 
+var bestiarioTipo = bestiario.GroupBy(monstro => monstro.Tipo);
+
+foreach (var grupo in bestiarioTipo)
 {
-    if (monstro.Tamanho >= Tamanho.Grande)
-    {
-        Console.WriteLine($"O monstro {monstro.Nome} é {TraduzirTamanho(monstro.Tamanho)}.");
-    }
-    else
-    {
-        Console.WriteLine($"O monstro {monstro.Nome} não é grande nem enorme.");
-    }
+    //    Console.WriteLine($"{grupo.Key}:");
+    //    foreach (var monstro in grupo)
+    //    {
+    //        Console.WriteLine($"-{monstro.Nome}");
+    //    }
+    //}
+    //{
+    //    Console.WriteLine($"{grupo.Key}");
+    //    Console.WriteLine(string.Join(", ", grupo.Select(m => m.Nome)));
+    //}
+    string nomes = string.Join(", ", grupo.Select(m => m.Nome));
+    Console.WriteLine($"{TraduzirTipo(grupo.Key)} ({grupo.Count()}): {nomes}");
 }
-
-var nomesDosGrandes = bestiario
-    .Where(m => m.Tamanho >= Tamanho.Grande)
-    .Select(m => m.Nome);
-
-foreach (var nome in nomesDosGrandes)
-{
-    Console.WriteLine(nome);
-}
-
-var ordemPorNivelDeDesafio = bestiario
-    .OrderByDescending(m => m.NivelDeDesafio)
-    .Select(m => new { m.Nome, m.NivelDeDesafio });
-foreach (var monstro in ordemPorNivelDeDesafio)
-{
-    Console.WriteLine($"O monstro {monstro.Nome} tem nível de desafio {monstro.NivelDeDesafio}.");
-}
-
-var nivelDesafioPequeno = bestiario.Count(m => m.NivelDeDesafio < 1.0);
-Console.WriteLine($"O bestiário tem {nivelDesafioPequeno} monstros com nível de desafio menor que 1.");
-
-var haMortoVivo = bestiario.Any(m => m.Tipo == TipoCriatura.MortoVivo);
-if (haMortoVivo)
-{
-    Console.WriteLine("O bestiário tem pelo menos um monstro do tipo Morto-Vivo.");
-}
-else
-{
-    Console.WriteLine("O bestiário não tem nenhum monstro do tipo Morto-Vivo.");
-}
-
-void BuscarMonstroNome (string nome)
-{
-    var monstroEncontrado = bestiario.FirstOrDefault(m => m.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
-    if (monstroEncontrado != null)
-    {
-        Console.WriteLine($"Monstro encontrado: {monstroEncontrado.Nome}");
-        ExibirMonstro(monstroEncontrado);
-    }
-    else
-    {
-        Console.WriteLine($"Nenhum monstro encontrado com o nome '{nome}'.");
-    }
-}
-
-BuscarMonstroNome("Hipogrifo");
-BuscarMonstroNome("Dragão Vermelho");
