@@ -3,57 +3,6 @@
 Console.WriteLine("Bem-vindo ao Bestiário!");
 Console.WriteLine();
 
-var magmin = new Monstro(
-    nome: "Magmin",
-    classeDeArmadura: 14,
-    pontosDeVida: 9,
-    deslocamento: 9.0,
-    atributos: new Atributos(
-        forca: 7,
-        destreza: 15,
-        constituicao: 12,
-        inteligencia: 8,
-        sabedoria: 11,
-        carisma: 10),
-    nivelDeDesafio: 0.5,
-    tipo: TipoCriatura.Elemental,
-    tamanho: Tamanho.Pequeno
-);
-
-var senhorDasMumias = new Monstro(
-    nome: "Senhor das Múmias",
-    classeDeArmadura: 17,
-    pontosDeVida: 97,
-    deslocamento: 6.0,
-    atributos: new Atributos(
-        forca: 18,
-        destreza: 10,
-        constituicao: 17,
-        inteligencia: 11,
-        sabedoria: 18,
-        carisma: 16),
-    nivelDeDesafio: 15.0,
-    tipo: TipoCriatura.MortoVivo,
-    tamanho: Tamanho.Medio
-    );
-
-var hipogrifo = new Monstro(
-    nome: "Hipogrifo",
-    classeDeArmadura: 11,
-    pontosDeVida: 19,
-    deslocamento: 12.0, //voo 18.0
-    atributos: new Atributos(
-        forca: 17,
-        destreza: 13,
-        constituicao: 13,
-        inteligencia: 2,
-        sabedoria: 12,
-        carisma: 8),
-    nivelDeDesafio: 1.0,
-    tipo: TipoCriatura.Monstruosidade,
-    tamanho: Tamanho.Grande
-);
-
 var caoInfernal = new Monstro(
     nome: "Cão Infernal",
     classeDeArmadura: 15,
@@ -88,6 +37,77 @@ var centauro = new Monstro(
     tamanho: Tamanho.Grande
 );
 
+var coruja = new Monstro(
+    nome: "Coruja",
+    classeDeArmadura: 11,
+    pontosDeVida: 1,
+    deslocamento: 1.5,
+    deslocamentoVoo: 18.0,
+    atributos: new Atributos(
+        forca: 3,
+        destreza: 13,
+        constituicao: 8,
+        inteligencia: 2,
+        sabedoria: 14,
+        carisma: 7),
+    nivelDeDesafio: 0.0,
+    tipo: TipoCriatura.Besta,
+    tamanho: Tamanho.Miudo
+);
+
+var dragaoAzulAnciao = new Monstro(
+    nome: "Dragão Azul Ancião",
+    classeDeArmadura: 22,
+    pontosDeVida: 481,
+    deslocamento: 12.0,
+    deslocamentoVoo: 24.0,
+    atributos: new Atributos(
+        forca: 29,
+        destreza: 10,
+        constituicao: 27,
+        inteligencia: 18,
+        sabedoria: 17,
+        carisma: 21),
+    nivelDeDesafio: 23.0,
+    tipo: TipoCriatura.Dragao,
+    tamanho: Tamanho.Imenso
+);
+
+var hipogrifo = new Monstro(
+    nome: "Hipogrifo",
+    classeDeArmadura: 11,
+    pontosDeVida: 19,
+    deslocamento: 12.0,
+    deslocamentoVoo: 18.0,
+    atributos: new Atributos(
+        forca: 17,
+        destreza: 13,
+        constituicao: 13,
+        inteligencia: 2,
+        sabedoria: 12,
+        carisma: 8),
+    nivelDeDesafio: 1.0,
+    tipo: TipoCriatura.Monstruosidade,
+    tamanho: Tamanho.Grande
+);
+
+var magmin = new Monstro(
+    nome: "Magmin",
+    classeDeArmadura: 14,
+    pontosDeVida: 9,
+    deslocamento: 9.0,
+    atributos: new Atributos(
+        forca: 7,
+        destreza: 15,
+        constituicao: 12,
+        inteligencia: 8,
+        sabedoria: 11,
+        carisma: 10),
+    nivelDeDesafio: 0.5,
+    tipo: TipoCriatura.Elemental,
+    tamanho: Tamanho.Pequeno
+);
+
 var remorhaz = new Monstro(
     nome: "Remorhaz",
     classeDeArmadura: 17,
@@ -105,49 +125,32 @@ var remorhaz = new Monstro(
     tamanho: Tamanho.Enorme
 );
 
-var coruja = new Monstro(
-    nome: "Coruja",
-    classeDeArmadura: 11,
-    pontosDeVida: 1,
-    deslocamento: 1.5, //voo 18.0
+var senhorDasMumias = new Monstro(
+    nome: "Senhor das Múmias",
+    classeDeArmadura: 17,
+    pontosDeVida: 97,
+    deslocamento: 6.0,
     atributos: new Atributos(
-        forca: 3,
-        destreza: 13,
-        constituicao: 8,
-        inteligencia: 2,
-        sabedoria: 14,
-        carisma: 7),
-    nivelDeDesafio: 0.0,
-    tipo: TipoCriatura.Besta,
-    tamanho: Tamanho.Miudo
-);
-
-var dragaoAzulAnciao = new Monstro(
-    nome: "Dragão Azul Ancião",
-    classeDeArmadura: 22,
-    pontosDeVida: 481,
-    deslocamento: 12.0, //voo 24.0
-    atributos: new Atributos(
-        forca: 29,
+        forca: 18,
         destreza: 10,
-        constituicao: 27,
-        inteligencia: 18,
-        sabedoria: 17,
-        carisma: 21),
-    nivelDeDesafio: 23.0,
-    tipo: TipoCriatura.Dragao,
-    tamanho: Tamanho.Imenso
+        constituicao: 17,
+        inteligencia: 11,
+        sabedoria: 18,
+        carisma: 16),
+    nivelDeDesafio: 15.0,
+    tipo: TipoCriatura.MortoVivo,
+    tamanho: Tamanho.Medio
 );
 
 var bestiario = new List<Monstro>();
-bestiario.Add(magmin);
-bestiario.Add(senhorDasMumias);
-bestiario.Add(hipogrifo);
 bestiario.Add(caoInfernal);
 bestiario.Add(centauro);
-bestiario.Add(remorhaz);
 bestiario.Add(coruja);
 bestiario.Add(dragaoAzulAnciao);
+bestiario.Add(hipogrifo);
+bestiario.Add(magmin);
+bestiario.Add(remorhaz);
+bestiario.Add(senhorDasMumias);
 
 foreach (var monstro in bestiario)
 {
@@ -161,7 +164,14 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Nome: {monstro.Nome}");
     Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
     Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
-    Console.WriteLine($"Deslocamento: {monstro.Deslocamento} metros");
+
+    string deslocamento = $"{monstro.Deslocamento} m";
+    if (monstro.DeslocamentoVoo is not null)
+    {
+        deslocamento += $", voo {monstro.DeslocamentoVoo} m";
+    }
+
+    Console.WriteLine($"Deslocamento: {deslocamento}");
     Console.WriteLine($"Força: {monstro.Atributos.Forca} ({monstro.Atributos.ModificadorForca:+0;-0;0})");
     Console.WriteLine($"Destreza: {monstro.Atributos.Destreza} ({monstro.Atributos.ModificadorDestreza:+0;-0;0})");
     Console.WriteLine($"Constituição: {monstro.Atributos.Constituicao} ({monstro.Atributos.ModificadorConstituicao:+0;-0;0})");
@@ -197,37 +207,20 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-List <Monstro> encontro = new List <Monstro> { caoInfernal, caoInfernal, centauro };
-
-// calcular XP total
-int XPTotal = encontro.Sum(monstro => monstro.Experiencia);
-Console.WriteLine($"XP total do encontro: {XPTotal}");
-
-// CA média do bestiário
-double CAMedia = bestiario.Average(monstro => monstro.ClasseDeArmadura);
-Console.WriteLine($"CA média do bestiário: {CAMedia:N1}");
-
-// Mais e Menos pontos de vida
-int maxPontosDeVida = bestiario.Max(monstro => monstro.PontosDeVida);
-int minPontosDeVida = bestiario.Min(monstro => monstro.PontosDeVida);
-Console.WriteLine($"Monstro com mais pontos de vida: {bestiario.First(m => m.PontosDeVida == maxPontosDeVida).Nome} : {maxPontosDeVida}");
-Console.WriteLine($"Monstro com menos pontos de vida: {bestiario.First(m => m.PontosDeVida == minPontosDeVida).Nome} : {minPontosDeVida}");
-
-// Agrupar bestiário por tipo 
-var bestiarioTipo = bestiario.GroupBy(monstro => monstro.Tipo);
-
-foreach (var grupo in bestiarioTipo)
+//buscar monstros que voam
+var monstrosQueVoam = bestiario.Where(m => m.DeslocamentoVoo is not null).ToList();
+Console.WriteLine("Monstros que voam:");
+foreach (var monstro in monstrosQueVoam)
 {
-    //    Console.WriteLine($"{grupo.Key}:");
-    //    foreach (var monstro in grupo)
-    //    {
-    //        Console.WriteLine($"-{monstro.Nome}");
-    //    }
-    //}
-    //{
-    //    Console.WriteLine($"{grupo.Key}");
-    //    Console.WriteLine(string.Join(", ", grupo.Select(m => m.Nome)));
-    //}
-    string nomes = string.Join(", ", grupo.Select(m => m.Nome));
-    Console.WriteLine($"{TraduzirTipo(grupo.Key)} ({grupo.Count()}): {nomes}");
+    Console.WriteLine($"- {monstro.Nome}");
 }
+
+//buscar monstro por nome
+void BuscarMonstro(string nome)
+{
+    var encontrado = bestiario.FirstOrDefault(m => m.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
+    Console.WriteLine(encontrado?.Nome ?? $"O monstro \"{nome}\" não foi encontrado.");
+}
+
+BuscarMonstro("hipogrifo");
+BuscarMonstro("Beholder");
