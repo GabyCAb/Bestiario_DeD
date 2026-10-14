@@ -7,7 +7,7 @@ var caoInfernal = new Monstro(
     nome: "Cão Infernal",
     classeDeArmadura: 15,
     pontosDeVida: 45,
-    deslocamento: 15.0,
+    deslocamento: new Deslocamento(15.0),
     atributos: new Atributos(
         forca: 17,
         destreza: 12,
@@ -24,7 +24,7 @@ var centauro = new Monstro(
     nome: "Centauro",
     classeDeArmadura: 12,
     pontosDeVida: 45,
-    deslocamento: 15.0,
+    deslocamento: new Deslocamento(15.0),
     atributos: new Atributos(
         forca: 18,
         destreza: 14,
@@ -41,8 +41,7 @@ var coruja = new Monstro(
     nome: "Coruja",
     classeDeArmadura: 11,
     pontosDeVida: 1,
-    deslocamento: 1.5,
-    deslocamentoVoo: 18.0,
+    deslocamento: new Deslocamento(1.5, voo: 18.0),
     atributos: new Atributos(
         forca: 3,
         destreza: 13,
@@ -59,8 +58,7 @@ var dragaoAzulAnciao = new Monstro(
     nome: "Dragão Azul Ancião",
     classeDeArmadura: 22,
     pontosDeVida: 481,
-    deslocamento: 12.0,
-    deslocamentoVoo: 24.0,
+    deslocamento: new Deslocamento(12.0, voo: 24.0),
     atributos: new Atributos(
         forca: 29,
         destreza: 10,
@@ -77,8 +75,7 @@ var hipogrifo = new Monstro(
     nome: "Hipogrifo",
     classeDeArmadura: 11,
     pontosDeVida: 19,
-    deslocamento: 12.0,
-    deslocamentoVoo: 18.0,
+    deslocamento: new Deslocamento(12.0, voo: 18.0),
     atributos: new Atributos(
         forca: 17,
         destreza: 13,
@@ -95,7 +92,7 @@ var magmin = new Monstro(
     nome: "Magmin",
     classeDeArmadura: 14,
     pontosDeVida: 9,
-    deslocamento: 9.0,
+    deslocamento: new Deslocamento(9.0),
     atributos: new Atributos(
         forca: 7,
         destreza: 15,
@@ -112,7 +109,7 @@ var remorhaz = new Monstro(
     nome: "Remorhaz",
     classeDeArmadura: 17,
     pontosDeVida: 195,
-    deslocamento: 9.0, //escavação 6.0
+    deslocamento: new Deslocamento(9.0, escavacao: 6.0),
     atributos: new Atributos(
         forca: 24,
         destreza: 13,
@@ -129,7 +126,7 @@ var senhorDasMumias = new Monstro(
     nome: "Senhor das Múmias",
     classeDeArmadura: 17,
     pontosDeVida: 97,
-    deslocamento: 6.0,
+    deslocamento: new Deslocamento(6.0),
     atributos: new Atributos(
         forca: 18,
         destreza: 10,
@@ -164,14 +161,7 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Nome: {monstro.Nome}");
     Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
     Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
-
-    string deslocamento = $"{monstro.Deslocamento} m";
-    if (monstro.DeslocamentoVoo is not null)
-    {
-        deslocamento += $", voo {monstro.DeslocamentoVoo} m";
-    }
-
-    Console.WriteLine($"Deslocamento: {deslocamento}");
+    Console.WriteLine($"Deslocamento: {monstro.Deslocamento}");
     Console.WriteLine($"Força: {monstro.Atributos.Forca} ({monstro.Atributos.ModificadorForca:+0;-0;+0})");
     Console.WriteLine($"Destreza: {monstro.Atributos.Destreza} ({monstro.Atributos.ModificadorDestreza:+0;-0;+0})");
     Console.WriteLine($"Constituição: {monstro.Atributos.Constituicao} ({monstro.Atributos.ModificadorConstituicao:+0;-0;+0})");
@@ -207,20 +197,3 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-var semVoo = new Deslocamento(9);
-Console.WriteLine(semVoo.Voo is null);         // esperado: True
-
-var comVoo = new Deslocamento(9, voo: 18);
-Console.WriteLine(comVoo.Voo);                 // esperado: 18
-
-var tubarao = new Deslocamento(0, natacao: 15);
-Console.WriteLine(tubarao.Caminhada);          // esperado: 0
-
-try
-{
-    var errado = new Deslocamento(9, voo: 0);
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}

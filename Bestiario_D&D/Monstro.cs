@@ -45,8 +45,7 @@ namespace Bestiario_D_D
         public string Nome { get; }
         public int ClasseDeArmadura { get; }
         public int PontosDeVida { get; }
-        public double Deslocamento { get; }
-        public double? DeslocamentoVoo { get; }
+        public Deslocamento Deslocamento { get; }
         public Atributos Atributos { get; }
         public double NivelDeDesafio { get; }
         public TipoCriatura Tipo { get; }
@@ -57,12 +56,11 @@ namespace Bestiario_D_D
             string nome,
             int classeDeArmadura,
             int pontosDeVida,
-            double deslocamento,
+            Deslocamento deslocamento,
             Atributos atributos,
             double nivelDeDesafio,
             TipoCriatura tipo,
-            Tamanho tamanho,
-            double? deslocamentoVoo = null
+            Tamanho tamanho
             )
         {
             if (string.IsNullOrWhiteSpace(nome))
@@ -80,14 +78,7 @@ namespace Bestiario_D_D
                 throw new ArgumentException("Os Pontos de Vida devem ser maiores que zero.");
             }
 
-            if (deslocamento < 0)
-            {
-                throw new ArgumentException("O deslocamento não pode ser negativo.");
-            }
-            if (deslocamentoVoo is not null && deslocamentoVoo < 0)
-            {
-                throw new ArgumentException("O deslocamento de voo não pode ser negativo.");
-            }
+            ArgumentNullException.ThrowIfNull(deslocamento);
 
             if (!TabelaXP.ContainsKey(nivelDeDesafio))
             {
@@ -98,7 +89,6 @@ namespace Bestiario_D_D
             ClasseDeArmadura = classeDeArmadura;
             PontosDeVida = pontosDeVida;
             Deslocamento = deslocamento;
-            DeslocamentoVoo = deslocamentoVoo;
             Atributos = atributos;
             NivelDeDesafio = nivelDeDesafio;
             Tipo = tipo;
