@@ -1,6 +1,6 @@
 ﻿// Enum Tamanhos
-namespace Bestiario_D_D
-{
+namespace Bestiario_D_D;
+
     public enum Tamanho
     {
         Miudo,
@@ -10,4 +10,4 @@ namespace Bestiario_D_D
         Enorme,
         Imenso
     }
-}
+

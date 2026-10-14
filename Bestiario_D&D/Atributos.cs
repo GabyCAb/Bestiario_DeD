@@ -1,5 +1,7 @@
 ﻿//ATRIBUTOS
 
+namespace Bestiario_D_D;
+
 public record Atributos
 {
 

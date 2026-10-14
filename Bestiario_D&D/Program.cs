@@ -172,12 +172,12 @@ void ExibirMonstro(Monstro monstro)
     }
 
     Console.WriteLine($"Deslocamento: {deslocamento}");
-    Console.WriteLine($"Força: {monstro.Atributos.Forca} ({monstro.Atributos.ModificadorForca:+0;-0;0})");
-    Console.WriteLine($"Destreza: {monstro.Atributos.Destreza} ({monstro.Atributos.ModificadorDestreza:+0;-0;0})");
-    Console.WriteLine($"Constituição: {monstro.Atributos.Constituicao} ({monstro.Atributos.ModificadorConstituicao:+0;-0;0})");
-    Console.WriteLine($"Inteligência: {monstro.Atributos.Inteligencia} ({monstro.Atributos.ModificadorInteligencia:+0;-0;0})");
-    Console.WriteLine($"Sabedoria: {monstro.Atributos.Sabedoria} ({monstro.Atributos.ModificadorSabedoria:+0;-0;0})");
-    Console.WriteLine($"Carisma: {monstro.Atributos.Carisma} ({monstro.Atributos.ModificadorCarisma:+0;-0;0})");
+    Console.WriteLine($"Força: {monstro.Atributos.Forca} ({monstro.Atributos.ModificadorForca:+0;-0;+0})");
+    Console.WriteLine($"Destreza: {monstro.Atributos.Destreza} ({monstro.Atributos.ModificadorDestreza:+0;-0;+0})");
+    Console.WriteLine($"Constituição: {monstro.Atributos.Constituicao} ({monstro.Atributos.ModificadorConstituicao:+0;-0;+0})");
+    Console.WriteLine($"Inteligência: {monstro.Atributos.Inteligencia} ({monstro.Atributos.ModificadorInteligencia:+0;-0;+0})");
+    Console.WriteLine($"Sabedoria: {monstro.Atributos.Sabedoria} ({monstro.Atributos.ModificadorSabedoria:+0;-0;+0})");
+    Console.WriteLine($"Carisma: {monstro.Atributos.Carisma} ({monstro.Atributos.ModificadorCarisma:+0;-0;+0})");
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }
@@ -207,16 +207,20 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-// Digitar dado Força de novo monstro
-Console.WriteLine("Digite a Força do novo monstro:");
+var semVoo = new Deslocamento(9);
+Console.WriteLine(semVoo.Voo is null);         // esperado: True
 
-string forcaInput = Console.ReadLine() ?? "0";
+var comVoo = new Deslocamento(9, voo: 18);
+Console.WriteLine(comVoo.Voo);                 // esperado: 18
 
-if (int.TryParse(forcaInput, out int forca))
+var tubarao = new Deslocamento(0, natacao: 15);
+Console.WriteLine(tubarao.Caminhada);          // esperado: 0
+
+try
 {
-    Console.WriteLine($"Força digitada: {forca}");
+    var errado = new Deslocamento(9, voo: 0);
 }
-else
+catch (ArgumentOutOfRangeException ex)
 {
-    Console.WriteLine("Entrada inválida");
+    Console.WriteLine(ex.Message);
 }
