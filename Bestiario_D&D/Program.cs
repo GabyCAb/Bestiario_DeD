@@ -207,20 +207,16 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-//buscar monstros que voam
-var monstrosQueVoam = bestiario.Where(m => m.DeslocamentoVoo is not null).ToList();
-Console.WriteLine("Monstros que voam:");
-foreach (var monstro in monstrosQueVoam)
-{
-    Console.WriteLine($"- {monstro.Nome}");
-}
+// Digitar dado Força de novo monstro
+Console.WriteLine("Digite a Força do novo monstro:");
 
-//buscar monstro por nome
-void BuscarMonstro(string nome)
-{
-    var encontrado = bestiario.FirstOrDefault(m => m.Nome.Equals(nome, StringComparison.OrdinalIgnoreCase));
-    Console.WriteLine(encontrado?.Nome ?? $"O monstro \"{nome}\" não foi encontrado.");
-}
+string forcaInput = Console.ReadLine() ?? "0";
 
-BuscarMonstro("hipogrifo");
-BuscarMonstro("Beholder");
+if (int.TryParse(forcaInput, out int forca))
+{
+    Console.WriteLine($"Força digitada: {forca}");
+}
+else
+{
+    Console.WriteLine("Entrada inválida");
+}
