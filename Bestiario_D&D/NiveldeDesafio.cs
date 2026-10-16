@@ -44,6 +44,24 @@ public record NivelDeDesafio
 
     public double Valor { get; init => field = ValidarND(value); }
 
+    public int Experiencia => TabelaXP[Valor];
+
+    public int BonusDeProficiencia => Valor switch
+    {
+        0 => 2,
+        0.125 => 2,
+        0.25 => 2,
+        0.5 => 2,
+        <= 4 => 2,
+        <= 8 => 3,
+        <= 12 => 4,
+        <= 16 => 5,
+        <= 20 => 6,
+        <= 24 => 7,
+        <= 28 => 8,
+        _ => 9
+    };
+
     public NivelDeDesafio(double valor)
     {
         Valor = valor;
@@ -70,4 +88,5 @@ public record NivelDeDesafio
         }
         return valor;
     }
-}
+
+};

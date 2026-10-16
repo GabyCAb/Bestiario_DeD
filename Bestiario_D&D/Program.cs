@@ -211,3 +211,14 @@ catch (ArgumentOutOfRangeException ex)
 {
     Console.WriteLine(ex.Message);
 }
+
+var nd = new NivelDeDesafio(3);
+Console.WriteLine($"ND {nd}: {nd.Experiencia} XP, proficiência +{nd.BonusDeProficiencia}");
+
+Console.WriteLine(new NivelDeDesafio(0.5).BonusDeProficiencia);   // esperado: 2
+Console.WriteLine(new NivelDeDesafio(4).BonusDeProficiencia);     // esperado: 2  (limite!)
+Console.WriteLine(new NivelDeDesafio(5).BonusDeProficiencia);     // esperado: 3  (limite!)
+Console.WriteLine(new NivelDeDesafio(15).BonusDeProficiencia);    // esperado: 5
+Console.WriteLine(new NivelDeDesafio(23).BonusDeProficiencia);    // esperado: 7
+Console.WriteLine(new NivelDeDesafio(30).BonusDeProficiencia);    // esperado: 9
+Console.WriteLine(new NivelDeDesafio(23).Experiencia);            // esperado: 50000
