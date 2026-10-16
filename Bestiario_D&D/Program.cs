@@ -197,3 +197,17 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
+Console.WriteLine(new NivelDeDesafio(0.125));   // esperado: 1/8
+Console.WriteLine(new NivelDeDesafio(0.5));     // esperado: 1/2
+Console.WriteLine(new NivelDeDesafio(0));       // esperado: 0
+Console.WriteLine(new NivelDeDesafio(23));      // esperado: 23
+Console.WriteLine(new NivelDeDesafio(0.5) == new NivelDeDesafio(0.5)); // esperado: True
+
+try
+{
+    var invalido = new NivelDeDesafio(7.5);
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
