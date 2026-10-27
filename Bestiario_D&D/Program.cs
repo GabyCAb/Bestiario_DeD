@@ -197,3 +197,26 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
+Console.WriteLine(new ExpressaoDeDados(7, 8, 14));      // Cão Infernal: 7d8 + 14
+Console.WriteLine(new ExpressaoDeDados(1, 4, -1));      // Coruja: 1d4 – 1
+Console.WriteLine(new ExpressaoDeDados(2, 8));          // exemplo do livro: 2d8
+Console.WriteLine(new ExpressaoDeDados(26, 20, 208));   // Dragão Azul Ancião: 26d20 + 208
+Console.WriteLine(new ExpressaoDeDados(2, 6, 2) == new ExpressaoDeDados(2, 6, 2)); // True
+
+try
+{
+    var dadoInexistente = new ExpressaoDeDados(2, 7);
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+try
+{
+    var semDados = new ExpressaoDeDados(0, 8);
+}
+catch (ArgumentOutOfRangeException ex)
+{
+    Console.WriteLine(ex.Message);
+}
