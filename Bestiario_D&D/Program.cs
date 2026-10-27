@@ -15,7 +15,7 @@ var caoInfernal = new Monstro(
         inteligencia: 6,
         sabedoria: 13,
         carisma: 6),
-    nivelDeDesafio: 3.0,
+    nivelDeDesafio: new NivelDeDesafio(3),
     tipo: TipoCriatura.Corruptor,
     tamanho: Tamanho.Medio
 );
@@ -32,7 +32,7 @@ var centauro = new Monstro(
         inteligencia: 9,
         sabedoria: 13,
         carisma: 11),
-    nivelDeDesafio: 2.0,
+    nivelDeDesafio: new NivelDeDesafio(2),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Grande
 );
@@ -49,7 +49,7 @@ var coruja = new Monstro(
         inteligencia: 2,
         sabedoria: 14,
         carisma: 7),
-    nivelDeDesafio: 0.0,
+    nivelDeDesafio: new NivelDeDesafio(0),
     tipo: TipoCriatura.Besta,
     tamanho: Tamanho.Miudo
 );
@@ -58,7 +58,7 @@ var dragaoAzulAnciao = new Monstro(
     nome: "Dragão Azul Ancião",
     classeDeArmadura: 22,
     pontosDeVida: 481,
-    deslocamento: new Deslocamento(12.0, voo: 24.0),
+    deslocamento: new Deslocamento(12.0, escavacao: 12.0, voo: 24.0),
     atributos: new Atributos(
         forca: 29,
         destreza: 10,
@@ -66,7 +66,7 @@ var dragaoAzulAnciao = new Monstro(
         inteligencia: 18,
         sabedoria: 17,
         carisma: 21),
-    nivelDeDesafio: 23.0,
+    nivelDeDesafio: new NivelDeDesafio(23),
     tipo: TipoCriatura.Dragao,
     tamanho: Tamanho.Imenso
 );
@@ -83,7 +83,7 @@ var hipogrifo = new Monstro(
         inteligencia: 2,
         sabedoria: 12,
         carisma: 8),
-    nivelDeDesafio: 1.0,
+    nivelDeDesafio: new NivelDeDesafio(1),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Grande
 );
@@ -100,7 +100,7 @@ var magmin = new Monstro(
         inteligencia: 8,
         sabedoria: 11,
         carisma: 10),
-    nivelDeDesafio: 0.5,
+    nivelDeDesafio: new NivelDeDesafio(0.5),
     tipo: TipoCriatura.Elemental,
     tamanho: Tamanho.Pequeno
 );
@@ -117,7 +117,7 @@ var remorhaz = new Monstro(
         inteligencia: 4,
         sabedoria: 10,
         carisma: 5),
-    nivelDeDesafio: 11.0,
+    nivelDeDesafio: new NivelDeDesafio(11),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Enorme
 );
@@ -134,7 +134,7 @@ var senhorDasMumias = new Monstro(
         inteligencia: 11,
         sabedoria: 18,
         carisma: 16),
-    nivelDeDesafio: 15.0,
+    nivelDeDesafio: new NivelDeDesafio(15),
     tipo: TipoCriatura.MortoVivo,
     tamanho: Tamanho.Medio
 );
@@ -197,28 +197,3 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-Console.WriteLine(new NivelDeDesafio(0.125));   // esperado: 1/8
-Console.WriteLine(new NivelDeDesafio(0.5));     // esperado: 1/2
-Console.WriteLine(new NivelDeDesafio(0));       // esperado: 0
-Console.WriteLine(new NivelDeDesafio(23));      // esperado: 23
-Console.WriteLine(new NivelDeDesafio(0.5) == new NivelDeDesafio(0.5)); // esperado: True
-
-try
-{
-    var invalido = new NivelDeDesafio(7.5);
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-var nd = new NivelDeDesafio(3);
-Console.WriteLine($"ND {nd}: {nd.Experiencia} XP, proficiência +{nd.BonusDeProficiencia}");
-
-Console.WriteLine(new NivelDeDesafio(0.5).BonusDeProficiencia);   // esperado: 2
-Console.WriteLine(new NivelDeDesafio(4).BonusDeProficiencia);     // esperado: 2  (limite!)
-Console.WriteLine(new NivelDeDesafio(5).BonusDeProficiencia);     // esperado: 3  (limite!)
-Console.WriteLine(new NivelDeDesafio(15).BonusDeProficiencia);    // esperado: 5
-Console.WriteLine(new NivelDeDesafio(23).BonusDeProficiencia);    // esperado: 7
-Console.WriteLine(new NivelDeDesafio(30).BonusDeProficiencia);    // esperado: 9
-Console.WriteLine(new NivelDeDesafio(23).Experiencia);            // esperado: 50000
