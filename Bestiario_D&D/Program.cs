@@ -8,7 +8,7 @@ Console.WriteLine();
 var caoInfernal = new Monstro(
     nome: "Cão Infernal",
     classeDeArmadura: 15,
-    pontosDeVida: 45,
+    dadosDeVida: new ExpressaoDeDados(7, 8, 14),
     deslocamento: new Deslocamento(15.0),
     atributos: new Atributos(
         forca: 17,
@@ -25,7 +25,7 @@ var caoInfernal = new Monstro(
 var centauro = new Monstro(
     nome: "Centauro",
     classeDeArmadura: 12,
-    pontosDeVida: 45,
+    dadosDeVida: new ExpressaoDeDados(6, 10, 12),
     deslocamento: new Deslocamento(15.0),
     atributos: new Atributos(
         forca: 18,
@@ -42,7 +42,7 @@ var centauro = new Monstro(
 var coruja = new Monstro(
     nome: "Coruja",
     classeDeArmadura: 11,
-    pontosDeVida: 1,
+    dadosDeVida: new ExpressaoDeDados(1, 4, -1),
     deslocamento: new Deslocamento(1.5, voo: 18.0),
     atributos: new Atributos(
         forca: 3,
@@ -59,7 +59,7 @@ var coruja = new Monstro(
 var dragaoAzulAnciao = new Monstro(
     nome: "Dragão Azul Ancião",
     classeDeArmadura: 22,
-    pontosDeVida: 481,
+    dadosDeVida: new ExpressaoDeDados(26, 20, 208),
     deslocamento: new Deslocamento(12.0, escavacao: 12.0, voo: 24.0),
     atributos: new Atributos(
         forca: 29,
@@ -76,7 +76,7 @@ var dragaoAzulAnciao = new Monstro(
 var hipogrifo = new Monstro(
     nome: "Hipogrifo",
     classeDeArmadura: 11,
-    pontosDeVida: 19,
+    dadosDeVida: new ExpressaoDeDados(3, 10, 3),
     deslocamento: new Deslocamento(12.0, voo: 18.0),
     atributos: new Atributos(
         forca: 17,
@@ -93,7 +93,7 @@ var hipogrifo = new Monstro(
 var magmin = new Monstro(
     nome: "Magmin",
     classeDeArmadura: 14,
-    pontosDeVida: 9,
+    dadosDeVida: new ExpressaoDeDados(2, 6, 2),
     deslocamento: new Deslocamento(9.0),
     atributos: new Atributos(
         forca: 7,
@@ -110,7 +110,7 @@ var magmin = new Monstro(
 var remorhaz = new Monstro(
     nome: "Remorhaz",
     classeDeArmadura: 17,
-    pontosDeVida: 195,
+    dadosDeVida: new ExpressaoDeDados(17, 12, 85),
     deslocamento: new Deslocamento(9.0, escavacao: 6.0),
     atributos: new Atributos(
         forca: 24,
@@ -127,7 +127,7 @@ var remorhaz = new Monstro(
 var senhorDasMumias = new Monstro(
     nome: "Senhor das Múmias",
     classeDeArmadura: 17,
-    pontosDeVida: 97,
+    dadosDeVida: new ExpressaoDeDados(13, 8, 39),
     deslocamento: new Deslocamento(6.0),
     atributos: new Atributos(
         forca: 18,
@@ -162,7 +162,7 @@ void ExibirMonstro(Monstro monstro)
 {
     Console.WriteLine($"Nome: {monstro.Nome}");
     Console.WriteLine($"Classe de Armadura: {monstro.ClasseDeArmadura}");
-    Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida}");
+    Console.WriteLine($"Pontos de Vida: {monstro.PontosDeVida} ({monstro.DadosDeVida})");
     Console.WriteLine($"Deslocamento: {monstro.Deslocamento}");
     Console.WriteLine($"Força: {monstro.Atributos.Forca} ({monstro.Atributos.ModificadorForca:+0;-0;+0})");
     Console.WriteLine($"Destreza: {monstro.Atributos.Destreza} ({monstro.Atributos.ModificadorDestreza:+0;-0;+0})");
@@ -198,14 +198,3 @@ string TraduzirTamanho(Tamanho tamanho)
 }
 
 //TESTES
-
-//TESTES MÉDIA
-Console.WriteLine($"{new ExpressaoDeDados(7, 8, 14)} → {new ExpressaoDeDados(7, 8, 14).Media}");       // Cão Infernal: 45
-Console.WriteLine($"{new ExpressaoDeDados(6, 10, 12)} → {new ExpressaoDeDados(6, 10, 12).Media}");     // Centauro: 45
-Console.WriteLine($"{new ExpressaoDeDados(1, 4, -1)} → {new ExpressaoDeDados(1, 4, -1).Media}");       // Coruja: 1
-Console.WriteLine($"{new ExpressaoDeDados(26, 20, 208)} → {new ExpressaoDeDados(26, 20, 208).Media}"); // Dragão Azul Ancião: 481
-Console.WriteLine($"{new ExpressaoDeDados(3, 10, 3)} → {new ExpressaoDeDados(3, 10, 3).Media}");       // Hipogrifo: 19
-Console.WriteLine($"{new ExpressaoDeDados(2, 6, 2)} → {new ExpressaoDeDados(2, 6, 2).Media}");         // Magmin: 9
-Console.WriteLine($"{new ExpressaoDeDados(17, 12, 85)} → {new ExpressaoDeDados(17, 12, 85).Media}");   // Remorhaz: 195
-Console.WriteLine($"{new ExpressaoDeDados(13, 8, 39)} → {new ExpressaoDeDados(13, 8, 39).Media}");     // Senhor das Múmias: 97
-Console.WriteLine($"{new ExpressaoDeDados(2, 8)} → {new ExpressaoDeDados(2, 8).Media}");               // exemplo do livro: 9

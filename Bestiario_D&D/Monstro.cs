@@ -7,7 +7,8 @@ namespace Bestiario_D_D
 
         public string Nome { get; }
         public int ClasseDeArmadura { get; }
-        public int PontosDeVida { get; }
+        public ExpressaoDeDados DadosDeVida { get; }
+        public int PontosDeVida => DadosDeVida.Media;
         public Deslocamento Deslocamento { get; }
         public Atributos Atributos { get; }
         public NivelDeDesafio NivelDeDesafio { get; }
@@ -18,7 +19,7 @@ namespace Bestiario_D_D
         public Monstro(
             string nome,
             int classeDeArmadura,
-            int pontosDeVida,
+            ExpressaoDeDados dadosDeVida,
             Deslocamento deslocamento,
             Atributos atributos,
             NivelDeDesafio nivelDeDesafio,
@@ -36,9 +37,11 @@ namespace Bestiario_D_D
                 throw new ArgumentException("A Classe de Armadura deve ser maior que zero.");
             }
 
-            if (pontosDeVida <= 0)
+            ArgumentNullException.ThrowIfNull(dadosDeVida);
+
+            if (dadosDeVida.Media < 1)
             {
-                throw new ArgumentException("Os Pontos de Vida devem ser maiores que zero.");
+                throw new ArgumentException("Os Pontos de Vida médios devem ser de pelo menos 1.");
             }
 
             ArgumentNullException.ThrowIfNull(deslocamento);
@@ -47,7 +50,7 @@ namespace Bestiario_D_D
 
             Nome = nome;
             ClasseDeArmadura = classeDeArmadura;
-            PontosDeVida = pontosDeVida;
+            DadosDeVida = dadosDeVida;
             Deslocamento = deslocamento;
             Atributos = atributos;
             NivelDeDesafio = nivelDeDesafio;
