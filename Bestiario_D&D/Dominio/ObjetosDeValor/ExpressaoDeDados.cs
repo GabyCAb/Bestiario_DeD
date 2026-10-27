@@ -20,11 +20,11 @@ public record ExpressaoDeDados
     {
         if (Bonus > 0)
         {
-            return $"{Quantidade}d{Faces}+{Bonus}";
+            return $"{Quantidade}d{Faces} +{Bonus}";
         }
         else if (Bonus < 0)
         {
-            return $"{Quantidade}d{Faces}{Bonus}";
+            return $"{Quantidade}d{Faces} {Bonus}";
         }
         else
         {

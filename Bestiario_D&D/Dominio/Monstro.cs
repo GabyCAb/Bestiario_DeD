@@ -18,6 +18,7 @@ namespace Bestiario_D_D.Dominio
         public TipoCriatura Tipo { get; }
         public Tamanho Tamanho { get; }
         public int Experiencia => NivelDeDesafio.Experiencia;
+        public IReadOnlyList<Pericia> Pericias { get; }
 
         public Monstro(
             string nome,
@@ -27,8 +28,10 @@ namespace Bestiario_D_D.Dominio
             Atributos atributos,
             NivelDeDesafio nivelDeDesafio,
             TipoCriatura tipo,
-            Tamanho tamanho
+            Tamanho tamanho,
+            IReadOnlyList<Pericia> pericias = null
             )
+
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
@@ -59,6 +62,7 @@ namespace Bestiario_D_D.Dominio
             NivelDeDesafio = nivelDeDesafio;
             Tipo = tipo;
             Tamanho = tamanho;
+            Pericias = (pericias ?? []).ToList();
         }
 
     }

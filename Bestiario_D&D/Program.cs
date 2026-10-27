@@ -19,6 +19,7 @@ var caoInfernal = new Monstro(
         inteligencia: 6,
         sabedoria: 13,
         carisma: 6),
+    pericias: [new Pericia (TipoPericia.Percepcao, 5)],
     nivelDeDesafio: new NivelDeDesafio(3),
     tipo: TipoCriatura.Corruptor,
     tamanho: Tamanho.Medio
@@ -36,6 +37,9 @@ var centauro = new Monstro(
         inteligencia: 9,
         sabedoria: 13,
         carisma: 11),
+    pericias: [new Pericia(TipoPericia.Atletismo, 6), 
+        new Pericia(TipoPericia.Percepcao, 3), 
+        new Pericia(TipoPericia.Sobrevivencia, 3)],
     nivelDeDesafio: new NivelDeDesafio(2),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Grande
@@ -53,6 +57,8 @@ var coruja = new Monstro(
         inteligencia: 2,
         sabedoria: 14,
         carisma: 7),
+    pericias: [new Pericia(TipoPericia.Furtividade, 3), 
+        new Pericia(TipoPericia.Percepcao, 4)],
     nivelDeDesafio: new NivelDeDesafio(0),
     tipo: TipoCriatura.Besta,
     tamanho: Tamanho.Miudo
@@ -70,6 +76,8 @@ var dragaoAzulAnciao = new Monstro(
         inteligencia: 18,
         sabedoria: 17,
         carisma: 21),
+    pericias: [new Pericia(TipoPericia.Furtividade, 7), 
+        new Pericia(TipoPericia.Percepcao, 17)],
     nivelDeDesafio: new NivelDeDesafio(23),
     tipo: TipoCriatura.Dragao,
     tamanho: Tamanho.Imenso
@@ -87,6 +95,7 @@ var hipogrifo = new Monstro(
         inteligencia: 2,
         sabedoria: 12,
         carisma: 8),
+    pericias: [new Pericia(TipoPericia.Percepcao, 5)],
     nivelDeDesafio: new NivelDeDesafio(1),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Grande
@@ -138,6 +147,8 @@ var senhorDasMumias = new Monstro(
         inteligencia: 11,
         sabedoria: 18,
         carisma: 16),
+    pericias: [new Pericia(TipoPericia.Historia, 5), 
+        new Pericia(TipoPericia.Religiao, 5)],
     nivelDeDesafio: new NivelDeDesafio(15),
     tipo: TipoCriatura.MortoVivo,
     tamanho: Tamanho.Medio
@@ -172,6 +183,13 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Inteligência: {monstro.Atributos.Inteligencia} ({monstro.Atributos.ModificadorInteligencia:+0;-0;+0})");
     Console.WriteLine($"Sabedoria: {monstro.Atributos.Sabedoria} ({monstro.Atributos.ModificadorSabedoria:+0;-0;+0})");
     Console.WriteLine($"Carisma: {monstro.Atributos.Carisma} ({monstro.Atributos.ModificadorCarisma:+0;-0;+0})");
+
+    if (monstro.Pericias.Any())
+    {
+        var textoPericias = string.Join(", ", monstro.Pericias.Select(p => $"{TraduzirPericia(p.Tipo)} {p.Bonus:+0;-0;+0}"));
+        Console.WriteLine($"Perícias: {textoPericias}");
+    }
+
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }
@@ -221,14 +239,3 @@ string TraduzirPericia(TipoPericia tipo)
 }
 
 //TESTES
-
-//TESTES PERÍCIA
-var percepcao = new Pericia(TipoPericia.Percepcao, 17);
-Console.WriteLine($"{TraduzirPericia(percepcao.Tipo)} {percepcao.Bonus:+0;-0;+0}");
-
-var lidar = new Pericia(TipoPericia.LidarComAnimais, 4);
-Console.WriteLine($"{TraduzirPericia(lidar.Tipo)} {lidar.Bonus:+0;-0;+0}");
-
-Console.WriteLine($"{TraduzirPericia(TipoPericia.Furtividade)}");
-Console.WriteLine(new Pericia(TipoPericia.Historia, 5) == new Pericia(TipoPericia.Historia, 5));
-Console.WriteLine(percepcao);
