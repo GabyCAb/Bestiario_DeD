@@ -1,6 +1,6 @@
 ﻿// NIVEL DE DESAFIO
 
-namespace Bestiario_D_D;
+namespace Bestiario_D_D.ObjetosDeValor;
 
 public record NivelDeDesafio
 {
