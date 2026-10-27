@@ -19,7 +19,7 @@ var caoInfernal = new Monstro(
         inteligencia: 6,
         sabedoria: 13,
         carisma: 6),
-    pericias: [new Pericia (TipoPericia.Percepcao, 5)],
+    pericias: [new Pericia(TipoPericia.Percepcao, 5)],
     nivelDeDesafio: new NivelDeDesafio(3),
     tipo: TipoCriatura.Corruptor,
     tamanho: Tamanho.Medio
@@ -37,8 +37,8 @@ var centauro = new Monstro(
         inteligencia: 9,
         sabedoria: 13,
         carisma: 11),
-    pericias: [new Pericia(TipoPericia.Atletismo, 6), 
-        new Pericia(TipoPericia.Percepcao, 3), 
+    pericias: [new Pericia(TipoPericia.Atletismo, 6),
+        new Pericia(TipoPericia.Percepcao, 3),
         new Pericia(TipoPericia.Sobrevivencia, 3)],
     nivelDeDesafio: new NivelDeDesafio(2),
     tipo: TipoCriatura.Monstruosidade,
@@ -57,7 +57,7 @@ var coruja = new Monstro(
         inteligencia: 2,
         sabedoria: 14,
         carisma: 7),
-    pericias: [new Pericia(TipoPericia.Furtividade, 3), 
+    pericias: [new Pericia(TipoPericia.Furtividade, 3),
         new Pericia(TipoPericia.Percepcao, 4)],
     nivelDeDesafio: new NivelDeDesafio(0),
     tipo: TipoCriatura.Besta,
@@ -76,7 +76,7 @@ var dragaoAzulAnciao = new Monstro(
         inteligencia: 18,
         sabedoria: 17,
         carisma: 21),
-    pericias: [new Pericia(TipoPericia.Furtividade, 7), 
+    pericias: [new Pericia(TipoPericia.Furtividade, 7),
         new Pericia(TipoPericia.Percepcao, 17)],
     nivelDeDesafio: new NivelDeDesafio(23),
     tipo: TipoCriatura.Dragao,
@@ -147,7 +147,7 @@ var senhorDasMumias = new Monstro(
         inteligencia: 11,
         sabedoria: 18,
         carisma: 16),
-    pericias: [new Pericia(TipoPericia.Historia, 5), 
+    pericias: [new Pericia(TipoPericia.Historia, 5),
         new Pericia(TipoPericia.Religiao, 5)],
     nivelDeDesafio: new NivelDeDesafio(15),
     tipo: TipoCriatura.MortoVivo,
@@ -190,6 +190,7 @@ void ExibirMonstro(Monstro monstro)
         Console.WriteLine($"Perícias: {textoPericias}");
     }
 
+    Console.WriteLine($"Sentidos: Percepção passiva {monstro.PercepcaoPassiva}");
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }

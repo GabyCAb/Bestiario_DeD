@@ -20,6 +20,21 @@ namespace Bestiario_D_D.Dominio
         public int Experiencia => NivelDeDesafio.Experiencia;
         public IReadOnlyList<Pericia> Pericias { get; }
 
+        public int PercepcaoPassiva
+        {
+            get
+            {
+                var percepcao = Pericias.FirstOrDefault(p => p.Tipo == TipoPericia.Percepcao);
+
+                if (percepcao is not null)
+                {
+                    return 10 + percepcao.Bonus;
+                }
+
+                return 10 + Atributos.ModificadorSabedoria;
+            }
+        }
+
         public Monstro(
             string nome,
             int classeDeArmadura,
@@ -29,9 +44,8 @@ namespace Bestiario_D_D.Dominio
             NivelDeDesafio nivelDeDesafio,
             TipoCriatura tipo,
             Tamanho tamanho,
-            IReadOnlyList<Pericia> pericias = null
+            IReadOnlyList<Pericia>? pericias = null
             )
-
         {
             if (string.IsNullOrWhiteSpace(nome))
             {
