@@ -1,4 +1,6 @@
-﻿using Bestiario_D_D;
+﻿using Bestiario_D_D.Dominio;
+using Bestiario_D_D.Dominio.Enums;
+using Bestiario_D_D.Dominio.ObjetosDeValor;
 
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 
@@ -197,4 +199,36 @@ string TraduzirTamanho(Tamanho tamanho)
     };
 }
 
+//função para converter o tipo de perícia em uma string amigável
+string TraduzirPericia(TipoPericia tipo)
+{
+    return tipo switch
+    {
+        TipoPericia.Atuacao => "Atuação",
+        TipoPericia.Enganacao => "Enganação",
+        TipoPericia.Historia => "História",
+        TipoPericia.Intimidacao => "Intimidação",
+        TipoPericia.Intuicao => "Intuição",
+        TipoPericia.Investigacao => "Investigação",
+        TipoPericia.LidarComAnimais => "Lidar com Animais",
+        TipoPericia.Percepcao => "Percepção",
+        TipoPericia.Persuasao => "Persuasão",
+        TipoPericia.Prestidigitacao => "Prestidigitação",
+        TipoPericia.Religiao => "Religião",
+        TipoPericia.Sobrevivencia => "Sobrevivência",
+        _ => tipo.ToString()
+    };
+}
+
 //TESTES
+
+//TESTES PERÍCIA
+var percepcao = new Pericia(TipoPericia.Percepcao, 17);
+Console.WriteLine($"{TraduzirPericia(percepcao.Tipo)} {percepcao.Bonus:+0;-0;+0}");
+
+var lidar = new Pericia(TipoPericia.LidarComAnimais, 4);
+Console.WriteLine($"{TraduzirPericia(lidar.Tipo)} {lidar.Bonus:+0;-0;+0}");
+
+Console.WriteLine($"{TraduzirPericia(TipoPericia.Furtividade)}");
+Console.WriteLine(new Pericia(TipoPericia.Historia, 5) == new Pericia(TipoPericia.Historia, 5));
+Console.WriteLine(percepcao);

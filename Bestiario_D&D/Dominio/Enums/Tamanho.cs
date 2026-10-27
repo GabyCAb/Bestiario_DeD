@@ -1,5 +1,5 @@
 ﻿// Enum Tamanhos
-namespace Bestiario_D_D;
+namespace Bestiario_D_D.Dominio.Enums;
 
     public enum Tamanho
     {

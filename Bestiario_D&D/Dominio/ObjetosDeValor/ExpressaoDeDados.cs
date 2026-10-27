@@ -1,4 +1,4 @@
-﻿namespace Bestiario_D_D;
+﻿namespace Bestiario_D_D.Dominio.ObjetosDeValor;
 
 public record ExpressaoDeDados
 {

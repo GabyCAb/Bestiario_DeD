@@ -1,6 +1,9 @@
 ﻿// Classe Monstro
 
-namespace Bestiario_D_D
+using Bestiario_D_D.Dominio.Enums;
+using Bestiario_D_D.Dominio.ObjetosDeValor;
+
+namespace Bestiario_D_D.Dominio
 {
     public class Monstro
     {

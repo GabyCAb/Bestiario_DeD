@@ -1,6 +1,6 @@
 ﻿// DESLOCAMENTO 
 
-namespace Bestiario_D_D.ObjetosDeValor;
+namespace Bestiario_D_D.Dominio.ObjetosDeValor;
 
 public record Deslocamento
 {
