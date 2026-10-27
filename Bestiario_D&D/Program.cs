@@ -1,5 +1,7 @@
 ﻿using Bestiario_D_D;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
 Console.WriteLine("Bem-vindo ao Bestiário!");
 Console.WriteLine();
 
@@ -197,26 +199,13 @@ string TraduzirTamanho(Tamanho tamanho)
 
 //TESTES
 
-Console.WriteLine(new ExpressaoDeDados(7, 8, 14));      // Cão Infernal: 7d8 + 14
-Console.WriteLine(new ExpressaoDeDados(1, 4, -1));      // Coruja: 1d4 – 1
-Console.WriteLine(new ExpressaoDeDados(2, 8));          // exemplo do livro: 2d8
-Console.WriteLine(new ExpressaoDeDados(26, 20, 208));   // Dragão Azul Ancião: 26d20 + 208
-Console.WriteLine(new ExpressaoDeDados(2, 6, 2) == new ExpressaoDeDados(2, 6, 2)); // True
-
-try
-{
-    var dadoInexistente = new ExpressaoDeDados(2, 7);
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
-
-try
-{
-    var semDados = new ExpressaoDeDados(0, 8);
-}
-catch (ArgumentOutOfRangeException ex)
-{
-    Console.WriteLine(ex.Message);
-}
+//TESTES MÉDIA
+Console.WriteLine($"{new ExpressaoDeDados(7, 8, 14)} → {new ExpressaoDeDados(7, 8, 14).Media}");       // Cão Infernal: 45
+Console.WriteLine($"{new ExpressaoDeDados(6, 10, 12)} → {new ExpressaoDeDados(6, 10, 12).Media}");     // Centauro: 45
+Console.WriteLine($"{new ExpressaoDeDados(1, 4, -1)} → {new ExpressaoDeDados(1, 4, -1).Media}");       // Coruja: 1
+Console.WriteLine($"{new ExpressaoDeDados(26, 20, 208)} → {new ExpressaoDeDados(26, 20, 208).Media}"); // Dragão Azul Ancião: 481
+Console.WriteLine($"{new ExpressaoDeDados(3, 10, 3)} → {new ExpressaoDeDados(3, 10, 3).Media}");       // Hipogrifo: 19
+Console.WriteLine($"{new ExpressaoDeDados(2, 6, 2)} → {new ExpressaoDeDados(2, 6, 2).Media}");         // Magmin: 9
+Console.WriteLine($"{new ExpressaoDeDados(17, 12, 85)} → {new ExpressaoDeDados(17, 12, 85).Media}");   // Remorhaz: 195
+Console.WriteLine($"{new ExpressaoDeDados(13, 8, 39)} → {new ExpressaoDeDados(13, 8, 39).Media}");     // Senhor das Múmias: 97
+Console.WriteLine($"{new ExpressaoDeDados(2, 8)} → {new ExpressaoDeDados(2, 8).Media}");               // exemplo do livro: 9

@@ -7,6 +7,7 @@ public record ExpressaoDeDados
     public int Quantidade { get; init => field = ValidarQuantidade(value); }
     public int Faces { get; init => field = ValidarFaces(value); }
     public int Bonus { get; init; }
+    public int Media => (int)Math.Floor(Quantidade * (Faces + 1) / 2.0 + Bonus);
 
     public ExpressaoDeDados(int quantidade, int faces, int bonus = 0)
     {
