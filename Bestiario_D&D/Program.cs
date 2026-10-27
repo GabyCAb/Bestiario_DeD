@@ -190,7 +190,10 @@ void ExibirMonstro(Monstro monstro)
         Console.WriteLine($"Perícias: {textoPericias}");
     }
 
-    Console.WriteLine($"Sentidos: Percepção passiva {monstro.PercepcaoPassiva}");
+    var partesSentidos = monstro.Sentidos.Select(s => $"{TraduzirSentido(s.Tipo)} {s.Alcance} m").ToList();
+    partesSentidos.Add($"Percepção passiva {monstro.PercepcaoPassiva}");
+    Console.WriteLine($"Sentidos: {string.Join(", ", partesSentidos)}");
+
     Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
     Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 }
@@ -239,4 +242,15 @@ string TraduzirPericia(TipoPericia tipo)
     };
 }
 
-//TESTES
+//função para converter o tipo de sentido em uma string amigável
+string TraduzirSentido(TipoSentido tipo)
+{
+    return tipo switch
+    {
+        TipoSentido.PercepcaoAsCegas => "Percepção às Cegas",
+        TipoSentido.SentidoSismico => "Sentido Sísmico",
+        TipoSentido.VisaoNoEscuro => "Visão no Escuro",
+        TipoSentido.VisaoVerdadeira => "Visão Verdadeira",
+        _ => tipo.ToString()
+    };
+}

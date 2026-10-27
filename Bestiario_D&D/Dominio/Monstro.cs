@@ -7,7 +7,7 @@ namespace Bestiario_D_D.Dominio
 {
     public class Monstro
     {
-
+        //Propriedades
         public string Nome { get; }
         public int ClasseDeArmadura { get; }
         public ExpressaoDeDados DadosDeVida { get; }
@@ -19,6 +19,7 @@ namespace Bestiario_D_D.Dominio
         public Tamanho Tamanho { get; }
         public int Experiencia => NivelDeDesafio.Experiencia;
         public IReadOnlyList<Pericia> Pericias { get; }
+        public IReadOnlyList<Sentido> Sentidos { get; }
 
         public int PercepcaoPassiva
         {
@@ -35,6 +36,7 @@ namespace Bestiario_D_D.Dominio
             }
         }
 
+        // Construtor
         public Monstro(
             string nome,
             int classeDeArmadura,
@@ -44,7 +46,8 @@ namespace Bestiario_D_D.Dominio
             NivelDeDesafio nivelDeDesafio,
             TipoCriatura tipo,
             Tamanho tamanho,
-            IReadOnlyList<Pericia>? pericias = null
+            IReadOnlyList<Pericia>? pericias = null,
+            IReadOnlyList<Sentido>? sentidos = null
             )
         {
             if (string.IsNullOrWhiteSpace(nome))
@@ -65,9 +68,10 @@ namespace Bestiario_D_D.Dominio
             }
 
             ArgumentNullException.ThrowIfNull(deslocamento);
-
+            ArgumentNullException.ThrowIfNull(atributos);
             ArgumentNullException.ThrowIfNull(nivelDeDesafio);
 
+            // Atribuições
             Nome = nome;
             ClasseDeArmadura = classeDeArmadura;
             DadosDeVida = dadosDeVida;
@@ -77,6 +81,7 @@ namespace Bestiario_D_D.Dominio
             Tipo = tipo;
             Tamanho = tamanho;
             Pericias = (pericias ?? []).ToList();
+            Sentidos = (sentidos ?? []).ToList();
         }
 
     }
