@@ -20,7 +20,7 @@ var caoInfernal = new Monstro(
         sabedoria: 13,
         carisma: 6),
     pericias: [new Pericia(TipoPericia.Percepcao, 5)],
-    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 36)],
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
     nivelDeDesafio: new NivelDeDesafio(3),
     tipo: TipoCriatura.Corruptor,
     tamanho: Tamanho.Medio
@@ -60,7 +60,7 @@ var coruja = new Monstro(
         carisma: 7),
     pericias: [new Pericia(TipoPericia.Furtividade, 3),
         new Pericia(TipoPericia.Percepcao, 4)],
-    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 36)],
     nivelDeDesafio: new NivelDeDesafio(0),
     tipo: TipoCriatura.Besta,
     tamanho: Tamanho.Miudo
@@ -78,6 +78,10 @@ var dragaoAzulAnciao = new Monstro(
         inteligencia: 18,
         sabedoria: 17,
         carisma: 21),
+    testesDeResistencia: [new TesteDeResistencia(TipoAtributo.Destreza, 7),
+        new TesteDeResistencia(TipoAtributo.Constituicao, 15),
+        new TesteDeResistencia(TipoAtributo.Sabedoria, 10),
+        new TesteDeResistencia(TipoAtributo.Carisma, 12)],
     pericias: [new Pericia(TipoPericia.Furtividade, 7),
         new Pericia(TipoPericia.Percepcao, 17)],
     sentidos: [new Sentido(TipoSentido.PercepcaoAsCegas, 18),
@@ -154,6 +158,10 @@ var senhorDasMumias = new Monstro(
         inteligencia: 11,
         sabedoria: 18,
         carisma: 16),
+    testesDeResistencia: [new TesteDeResistencia(TipoAtributo.Constituicao, 8),
+        new TesteDeResistencia(TipoAtributo.Inteligencia, 5),
+        new TesteDeResistencia(TipoAtributo.Sabedoria, 9),
+        new TesteDeResistencia(TipoAtributo.Carisma, 8)],
     pericias: [new Pericia(TipoPericia.Historia, 5),
         new Pericia(TipoPericia.Religiao, 5)],
     sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
@@ -191,6 +199,12 @@ void ExibirMonstro(Monstro monstro)
     Console.WriteLine($"Inteligência: {monstro.Atributos.Inteligencia} ({monstro.Atributos.ModificadorInteligencia:+0;-0;+0})");
     Console.WriteLine($"Sabedoria: {monstro.Atributos.Sabedoria} ({monstro.Atributos.ModificadorSabedoria:+0;-0;+0})");
     Console.WriteLine($"Carisma: {monstro.Atributos.Carisma} ({monstro.Atributos.ModificadorCarisma:+0;-0;+0})");
+
+    if (monstro.TestesDeResistencia.Any())
+    {
+        var textoTestes = string.Join(", ", monstro.TestesDeResistencia.Select(t => $"{AbreviarAtributo(t.Atributo)} {t.Bonus:+0;-0;+0}"));
+        Console.WriteLine($"Testes de Resistência: {textoTestes}");
+    }
 
     if (monstro.Pericias.Any())
     {
@@ -260,5 +274,20 @@ string TraduzirSentido(TipoSentido tipo)
         TipoSentido.VisaoNoEscuro => "Visão no Escuro",
         TipoSentido.VisaoVerdadeira => "Visão Verdadeira",
         _ => tipo.ToString()
+    };
+}
+
+//função para abreviação de atributos
+string AbreviarAtributo(TipoAtributo atributo)
+{
+    return atributo switch
+    {
+        TipoAtributo.Forca => "FOR",
+        TipoAtributo.Destreza => "DES",
+        TipoAtributo.Constituicao => "CON",
+        TipoAtributo.Inteligencia => "INT",
+        TipoAtributo.Sabedoria => "SAB",
+        TipoAtributo.Carisma => "CAR",
+        _ => atributo.ToString()
     };
 }

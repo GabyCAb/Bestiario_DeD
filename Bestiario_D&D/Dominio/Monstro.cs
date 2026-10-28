@@ -18,6 +18,8 @@ public class Monstro
     public TipoCriatura Tipo { get; }
     public Tamanho Tamanho { get; }
     public int Experiencia => NivelDeDesafio.Experiencia;
+
+    public IReadOnlyList<TesteDeResistencia> TestesDeResistencia { get; }
     public IReadOnlyList<Pericia> Pericias { get; }
     public IReadOnlyList<Sentido> Sentidos { get; }
 
@@ -36,7 +38,7 @@ public class Monstro
         }
     }
 
-    // Construtor
+    // Construtor //Parâmetros
     public Monstro(
         string nome,
         int classeDeArmadura,
@@ -46,6 +48,7 @@ public class Monstro
         NivelDeDesafio nivelDeDesafio,
         TipoCriatura tipo,
         Tamanho tamanho,
+        IReadOnlyList<TesteDeResistencia>? testesDeResistencia = null,
         IReadOnlyList<Pericia>? pericias = null,
         IReadOnlyList<Sentido>? sentidos = null
         )
@@ -80,6 +83,7 @@ public class Monstro
         NivelDeDesafio = nivelDeDesafio;
         Tipo = tipo;
         Tamanho = tamanho;
+        TestesDeResistencia = (testesDeResistencia ?? []).ToList();
         Pericias = (pericias ?? []).ToList();
         Sentidos = (sentidos ?? []).ToList();
 
@@ -87,6 +91,16 @@ public class Monstro
         if (Sentidos.GroupBy(s => s.Tipo).Any(grupo => grupo.Count() > 1))
         {
             throw new ArgumentException("Um monstro não pode ter o mesmo sentido mais de uma vez.");
+        }
+
+        if (TestesDeResistencia.GroupBy(t => t.Atributo).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter o mesmo teste de resistência mais de uma vez.");
+        }
+
+        if (Pericias.GroupBy(p => p.Tipo).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter a mesma perícia mais de uma vez.");
         }
     }
 }
