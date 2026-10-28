@@ -36,6 +36,18 @@ public static class ExibicaoDeMonstro
         partesSentidos.Add($"Percepção passiva {monstro.PercepcaoPassiva}");
         Console.WriteLine($"Sentidos: {string.Join(", ", partesSentidos)}");
 
+        var falados = monstro.Idiomas.Where(i => !i.ApenasCompreende).Select(i => i.Nome).ToList();
+        var compreendidos = monstro.Idiomas.Where(i => i.ApenasCompreende).Select(i => i.Nome).ToList();
+
+        var partesIdiomas = new List<string>(falados);
+        if (compreendidos.Any())
+        {
+            partesIdiomas.Add($"compreende {string.Join(", ", compreendidos)} mas não pode falar");
+        }
+
+        var textoIdiomas = partesIdiomas.Any() ? string.Join(", ", partesIdiomas) : "–";
+        Console.WriteLine($"Idiomas: {textoIdiomas}");
+
         Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
         Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
     }

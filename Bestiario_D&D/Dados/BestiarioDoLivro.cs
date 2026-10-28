@@ -39,6 +39,7 @@ public static class BestiarioDoLivro
                 carisma: 6),
             pericias: [new Pericia(TipoPericia.Percepcao, 5)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
+            idiomas: [new Idioma("Infernal", apenasCompreende: true)],
             nivelDeDesafio: new NivelDeDesafio(3),
             tipo: TipoCriatura.Corruptor,
             tamanho: Tamanho.Medio
@@ -62,6 +63,7 @@ public static class BestiarioDoLivro
             pericias: [new Pericia(TipoPericia.Atletismo, 6),
                 new Pericia(TipoPericia.Percepcao, 3),
                 new Pericia(TipoPericia.Sobrevivencia, 3)],
+            idiomas: [new Idioma("Élfico"), new Idioma("Silvestre")],
             nivelDeDesafio: new NivelDeDesafio(2),
             tipo: TipoCriatura.Monstruosidade,
             tamanho: Tamanho.Grande
@@ -113,6 +115,7 @@ public static class BestiarioDoLivro
                 new Pericia(TipoPericia.Percepcao, 17)],
             sentidos: [new Sentido(TipoSentido.PercepcaoAsCegas, 18),
                 new Sentido(TipoSentido.VisaoNoEscuro, 36)],
+            idiomas: [new Idioma("Comum"), new Idioma("Dracônico")],
             nivelDeDesafio: new NivelDeDesafio(23),
             tipo: TipoCriatura.Dragao,
             tamanho: Tamanho.Imenso
@@ -155,6 +158,7 @@ public static class BestiarioDoLivro
                 sabedoria: 11,
                 carisma: 10),
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
+            idiomas: [new Idioma("Ignan")],
             nivelDeDesafio: new NivelDeDesafio(0.5),
             tipo: TipoCriatura.Elemental,
             tamanho: Tamanho.Pequeno
@@ -204,6 +208,7 @@ public static class BestiarioDoLivro
             pericias: [new Pericia(TipoPericia.Historia, 5),
                 new Pericia(TipoPericia.Religiao, 5)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
+            idiomas: [new Idioma("Os idiomas que conhecia em vida")],
             nivelDeDesafio: new NivelDeDesafio(15),
             tipo: TipoCriatura.MortoVivo,
             tamanho: Tamanho.Medio

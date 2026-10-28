@@ -22,6 +22,7 @@ public class Monstro
     public IReadOnlyList<TesteDeResistencia> TestesDeResistencia { get; }
     public IReadOnlyList<Pericia> Pericias { get; }
     public IReadOnlyList<Sentido> Sentidos { get; }
+    public IReadOnlyList<Idioma> Idiomas { get; }
 
     public int PercepcaoPassiva
     {
@@ -50,7 +51,8 @@ public class Monstro
         Tamanho tamanho,
         IReadOnlyList<TesteDeResistencia>? testesDeResistencia = null,
         IReadOnlyList<Pericia>? pericias = null,
-        IReadOnlyList<Sentido>? sentidos = null
+        IReadOnlyList<Sentido>? sentidos = null,
+        IReadOnlyList<Idioma>? idiomas = null
         )
     {
         if (string.IsNullOrWhiteSpace(nome))
@@ -86,6 +88,7 @@ public class Monstro
         TestesDeResistencia = (testesDeResistencia ?? []).ToList();
         Pericias = (pericias ?? []).ToList();
         Sentidos = (sentidos ?? []).ToList();
+        Idiomas = (idiomas ?? []).ToList();
 
         // Regras que envolvem várias partes
         if (Sentidos.GroupBy(s => s.Tipo).Any(grupo => grupo.Count() > 1))
@@ -101,6 +104,11 @@ public class Monstro
         if (Pericias.GroupBy(p => p.Tipo).Any(grupo => grupo.Count() > 1))
         {
             throw new ArgumentException("Um monstro não pode ter a mesma perícia mais de uma vez.");
+        }
+
+        if(Idiomas.GroupBy(i => i.Nome).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter o mesmo idioma mais de uma vez.");
         }
     }
 }
