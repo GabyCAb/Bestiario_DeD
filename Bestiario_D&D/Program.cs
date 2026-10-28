@@ -20,6 +20,7 @@ var caoInfernal = new Monstro(
         sabedoria: 13,
         carisma: 6),
     pericias: [new Pericia(TipoPericia.Percepcao, 5)],
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 36)],
     nivelDeDesafio: new NivelDeDesafio(3),
     tipo: TipoCriatura.Corruptor,
     tamanho: Tamanho.Medio
@@ -59,6 +60,7 @@ var coruja = new Monstro(
         carisma: 7),
     pericias: [new Pericia(TipoPericia.Furtividade, 3),
         new Pericia(TipoPericia.Percepcao, 4)],
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
     nivelDeDesafio: new NivelDeDesafio(0),
     tipo: TipoCriatura.Besta,
     tamanho: Tamanho.Miudo
@@ -78,6 +80,8 @@ var dragaoAzulAnciao = new Monstro(
         carisma: 21),
     pericias: [new Pericia(TipoPericia.Furtividade, 7),
         new Pericia(TipoPericia.Percepcao, 17)],
+    sentidos: [new Sentido(TipoSentido.PercepcaoAsCegas, 18),
+        new Sentido(TipoSentido.VisaoNoEscuro, 36)],
     nivelDeDesafio: new NivelDeDesafio(23),
     tipo: TipoCriatura.Dragao,
     tamanho: Tamanho.Imenso
@@ -113,6 +117,7 @@ var magmin = new Monstro(
         inteligencia: 8,
         sabedoria: 11,
         carisma: 10),
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
     nivelDeDesafio: new NivelDeDesafio(0.5),
     tipo: TipoCriatura.Elemental,
     tamanho: Tamanho.Pequeno
@@ -130,6 +135,8 @@ var remorhaz = new Monstro(
         inteligencia: 4,
         sabedoria: 10,
         carisma: 5),
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18), 
+        new Sentido(TipoSentido.SentidoSismico, 18)],
     nivelDeDesafio: new NivelDeDesafio(11),
     tipo: TipoCriatura.Monstruosidade,
     tamanho: Tamanho.Enorme
@@ -149,6 +156,7 @@ var senhorDasMumias = new Monstro(
         carisma: 16),
     pericias: [new Pericia(TipoPericia.Historia, 5),
         new Pericia(TipoPericia.Religiao, 5)],
+    sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
     nivelDeDesafio: new NivelDeDesafio(15),
     tipo: TipoCriatura.MortoVivo,
     tamanho: Tamanho.Medio
