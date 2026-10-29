@@ -53,10 +53,10 @@ public static class ExibicaoDeMonstro
 
         if (monstro.Tracos.Any())
         {
-            Console.WriteLine("Traços:");
+            Console.WriteLine();
             foreach (var traco in monstro.Tracos)
             {
-                Console.WriteLine($"- {traco.Nome}: {traco.Descricao}");
+                Console.WriteLine($"{traco.Nome}. {traco.Descricao}");
             }
         }
     }
