@@ -25,6 +25,8 @@ public class Monstro
     public IReadOnlyList<Sentido> Sentidos { get; }
     public IReadOnlyList<Idioma> Idiomas { get; }
     public IReadOnlyList<Traco> Tracos { get; }
+    public IReadOnlyList<Acao> Acoes { get; }
+    public IReadOnlyList<Reacao> Reacoes { get; }
 
     public int PercepcaoPassiva
     {
@@ -55,7 +57,9 @@ public class Monstro
         IReadOnlyList<Pericia>? pericias = null,
         IReadOnlyList<Sentido>? sentidos = null,
         IReadOnlyList<Idioma>? idiomas = null,
-        IReadOnlyList<Traco>? tracos = null
+        IReadOnlyList<Traco>? tracos = null,
+        IReadOnlyList<Acao>? acoes = null,
+        IReadOnlyList<Reacao>? reacoes = null
         )
     {
         if (string.IsNullOrWhiteSpace(nome))
@@ -93,6 +97,8 @@ public class Monstro
         Sentidos = (sentidos ?? []).ToList();
         Idiomas = (idiomas ?? []).ToList();
         Tracos = (tracos ?? []).ToList();
+        Acoes = (acoes ?? []).ToList();
+        Reacoes = (reacoes ?? []).ToList();
 
         // Regras que envolvem várias partes
         if (Sentidos.GroupBy(s => s.Tipo).Any(grupo => grupo.Count() > 1))
@@ -118,6 +124,16 @@ public class Monstro
         if (Tracos.GroupBy(t => t.Nome).Any(grupo => grupo.Count() > 1))
         {
             throw new ArgumentException("Um monstro não pode ter o mesmo traço mais de uma vez.");
+        }
+
+        if (Acoes.GroupBy(a => a.Nome).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter a mesma ação mais de uma vez.");
+        }
+
+        if (Reacoes.GroupBy(r => r.Nome).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter a mesma reação mais de uma vez.");
         }
     }
 }

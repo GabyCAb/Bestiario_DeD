@@ -2,6 +2,7 @@
 
 using Bestiario_D_D.Dominio;
 using Bestiario_D_D.Dominio.Enums;
+using Bestiario_D_D.Dominio.Habilidades;
 
 namespace Bestiario_D_D.Apresentacao;
 
@@ -51,13 +52,30 @@ public static class ExibicaoDeMonstro
         Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
         Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
 
-        if (monstro.Tracos.Any())
+        ExibirSecao(null, monstro.Tracos);
+        ExibirSecao("AÇÕES", monstro.Acoes);
+        ExibirSecao("REAÇÕES", monstro.Reacoes);
+    }
+
+    // função para exibir uma seção de habilidades (traços, ações, reações...)
+    private static void ExibirSecao(string? titulo, IEnumerable<Habilidade> habilidades)
+    {
+        // se não houver habilidades, sai do método sem imprimir nada
+        if (!habilidades.Any())
         {
-            Console.WriteLine();
-            foreach (var traco in monstro.Tracos)
-            {
-                Console.WriteLine($"{traco.Nome}. {traco.Descricao}");
-            }
+            return;
+        }
+        // linha em branco
+        Console.WriteLine();
+        // se houver título, imprime o título
+        if (!string.IsNullOrWhiteSpace(titulo))
+        {
+            Console.WriteLine(titulo);
+        }
+        // foreach imprimindo "Nome. Descrição"
+        foreach (var habilidade in habilidades)
+        {
+            Console.WriteLine($"{habilidade.Nome}. {habilidade.Descricao}");
         }
     }
 
