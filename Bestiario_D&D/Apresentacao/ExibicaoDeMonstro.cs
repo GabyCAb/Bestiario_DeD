@@ -50,6 +50,15 @@ public static class ExibicaoDeMonstro
 
         Console.WriteLine($"Nível de Desafio: {monstro.NivelDeDesafio} ({monstro.Experiencia:N0} XP)");
         Console.WriteLine($"{TraduzirTipo(monstro.Tipo)} {TraduzirTamanho(monstro.Tamanho)}");
+
+        if (monstro.Tracos.Any())
+        {
+            Console.WriteLine("Traços:");
+            foreach (var traco in monstro.Tracos)
+            {
+                Console.WriteLine($"- {traco.Nome}: {traco.Descricao}");
+            }
+        }
     }
 
     // função para converter o tipo de criatura em uma string amigável

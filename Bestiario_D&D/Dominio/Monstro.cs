@@ -2,6 +2,7 @@
 
 using Bestiario_D_D.Dominio.Enums;
 using Bestiario_D_D.Dominio.ObjetosDeValor;
+using Bestiario_D_D.Dominio.Habilidades;
 
 namespace Bestiario_D_D.Dominio;
 
@@ -23,6 +24,7 @@ public class Monstro
     public IReadOnlyList<Pericia> Pericias { get; }
     public IReadOnlyList<Sentido> Sentidos { get; }
     public IReadOnlyList<Idioma> Idiomas { get; }
+    public IReadOnlyList<Traco> Tracos { get; }
 
     public int PercepcaoPassiva
     {
@@ -52,7 +54,8 @@ public class Monstro
         IReadOnlyList<TesteDeResistencia>? testesDeResistencia = null,
         IReadOnlyList<Pericia>? pericias = null,
         IReadOnlyList<Sentido>? sentidos = null,
-        IReadOnlyList<Idioma>? idiomas = null
+        IReadOnlyList<Idioma>? idiomas = null,
+        IReadOnlyList<Traco>? tracos = null
         )
     {
         if (string.IsNullOrWhiteSpace(nome))
@@ -89,6 +92,7 @@ public class Monstro
         Pericias = (pericias ?? []).ToList();
         Sentidos = (sentidos ?? []).ToList();
         Idiomas = (idiomas ?? []).ToList();
+        Tracos = (tracos ?? []).ToList();
 
         // Regras que envolvem várias partes
         if (Sentidos.GroupBy(s => s.Tipo).Any(grupo => grupo.Count() > 1))
@@ -109,6 +113,11 @@ public class Monstro
         if(Idiomas.GroupBy(i => i.Nome).Any(grupo => grupo.Count() > 1))
         {
             throw new ArgumentException("Um monstro não pode ter o mesmo idioma mais de uma vez.");
+        }
+
+        if (Tracos.GroupBy(t => t.Nome).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter o mesmo traço mais de uma vez.");
         }
     }
 }

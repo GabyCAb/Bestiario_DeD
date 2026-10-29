@@ -2,6 +2,7 @@
 
 using Bestiario_D_D.Dominio;
 using Bestiario_D_D.Dominio.Enums;
+using Bestiario_D_D.Dominio.Habilidades;
 using Bestiario_D_D.Dominio.ObjetosDeValor;
 
 namespace Bestiario_D_D.Dados;
@@ -40,6 +41,10 @@ public static class BestiarioDoLivro
             pericias: [new Pericia(TipoPericia.Percepcao, 5)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
             idiomas: [new Idioma("Infernal", apenasCompreende: true)],
+            tracos: [
+                new Traco("Audição e Faro aguçados", "O cão tem vantagem em testes de Sabedoria (Percepção) relacionados à audição eao olfato."),
+                new Traco("Táticas de matilha", "O cão tem vantagem nas jogadas de ataque contra uma criatura se, pelo menos, um dos aliados do cão estiver a 1,5 metro da criatura e não estiver incapacitado")
+                ],
             nivelDeDesafio: new NivelDeDesafio(3),
             tipo: TipoCriatura.Corruptor,
             tamanho: Tamanho.Medio
