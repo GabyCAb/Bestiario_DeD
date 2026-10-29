@@ -41,10 +41,11 @@ public static class BestiarioDoLivro
             pericias: [new Pericia(TipoPericia.Percepcao, 5)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
             idiomas: [new Idioma("Infernal", apenasCompreende: true)],
-            tracos: [
-                new Traco("Audição e Faro aguçados", "O cão tem vantagem em testes de Sabedoria (Percepção) relacionados à audição eao olfato."),
-                new Traco("Táticas de matilha", "O cão tem vantagem nas jogadas de ataque contra uma criatura se, pelo menos, um dos aliados do cão estiver a 1,5 metro da criatura e não estiver incapacitado")
-                ],
+            tracos:
+            [
+                new Traco("Audição e Faro Aguçados", "O cão tem vantagem em testes de Sabedoria (Percepção) relacionados à audição e ao olfato."),
+                new Traco("Táticas de Matilha", "O cão tem vantagem nas jogadas de ataque contra uma criatura se, pelo menos, um dos aliados do cão estiver a 1,5 metro da criatura e não estiver incapacitado.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(3),
             tipo: TipoCriatura.Corruptor,
             tamanho: Tamanho.Medio
@@ -69,6 +70,10 @@ public static class BestiarioDoLivro
                 new Pericia(TipoPericia.Percepcao, 3),
                 new Pericia(TipoPericia.Sobrevivencia, 3)],
             idiomas: [new Idioma("Élfico"), new Idioma("Silvestre")],
+            tracos:
+            [
+                new Traco("Investida", "Se o centauro se mover, pelo menos, 9 metros em linha reta até um alvo e então atingi-lo com um ataque de lança montada no mesmo turno, o alvo sofre 10 (3d6) de dano perfurante extra.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(2),
             tipo: TipoCriatura.Monstruosidade,
             tamanho: Tamanho.Grande
@@ -92,6 +97,11 @@ public static class BestiarioDoLivro
             pericias: [new Pericia(TipoPericia.Furtividade, 3),
                 new Pericia(TipoPericia.Percepcao, 4)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 36)],
+            tracos:
+            [
+                new Traco("Sobrevoo", "A coruja não provoca ataques de oportunidade quando voa para fora do alcance de um inimigo."),
+                new Traco("Visão e Audição Aguçadas", "A coruja tem vantagem em testes de Sabedoria (Percepção) relacionados à visão e à audição.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(0),
             tipo: TipoCriatura.Besta,
             tamanho: Tamanho.Miudo
@@ -121,6 +131,11 @@ public static class BestiarioDoLivro
             sentidos: [new Sentido(TipoSentido.PercepcaoAsCegas, 18),
                 new Sentido(TipoSentido.VisaoNoEscuro, 36)],
             idiomas: [new Idioma("Comum"), new Idioma("Dracônico")],
+            tracos:
+            [
+                // TODO 2.3c: limite de uso (3/Dia)
+                new Traco("Resistência Lendária", "Se o dragão falhar em um teste de resistência, ele pode escolher obter sucesso, no lugar.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(23),
             tipo: TipoCriatura.Dragao,
             tamanho: Tamanho.Imenso
@@ -142,6 +157,10 @@ public static class BestiarioDoLivro
                 sabedoria: 12,
                 carisma: 8),
             pericias: [new Pericia(TipoPericia.Percepcao, 5)],
+            tracos:
+            [
+                new Traco("Visão Aguçada", "O hipogrifo tem vantagem em testes de Sabedoria (Percepção) relacionados à visão.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(1),
             tipo: TipoCriatura.Monstruosidade,
             tamanho: Tamanho.Grande
@@ -164,6 +183,11 @@ public static class BestiarioDoLivro
                 carisma: 10),
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
             idiomas: [new Idioma("Ignan")],
+            tracos:
+            [
+                new Traco("Explosão da Morte", "Quando o magmin morre, ele explode numa erupção de fogo e magma. Cada criatura a até 3 metros dele deve realizar um teste de resistência de Destreza CD 11, sofrendo 7 (2d6) de dano de fogo numa falha na resistência, ou metade desse dano num sucesso. Objetos inflamáveis que não estejam sendo vestidos ou carregados na área são incendiados."),
+                new Traco("Iluminação Inflamável", "Com uma ação bônus, o magmin pode se incendiar ou extinguir suas chamas. Enquanto estiver em chamas, o magmin emite luz plena num raio de 3 metros e penumbra por mais 3 metros adicionais.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(0.5),
             tipo: TipoCriatura.Elemental,
             tamanho: Tamanho.Pequeno
@@ -186,6 +210,10 @@ public static class BestiarioDoLivro
                 carisma: 5),
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18), 
                 new Sentido(TipoSentido.SentidoSismico, 18)],
+            tracos:
+            [
+                new Traco("Corpo Aquecido", "Uma criatura que toque o remorhaz ou atinja-o com um ataque corpo-a-corpo a 1,5 metro dele sofre 10 (3d6) de dano de fogo.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(11),
             tipo: TipoCriatura.Monstruosidade,
             tamanho: Tamanho.Enorme
@@ -214,6 +242,12 @@ public static class BestiarioDoLivro
                 new Pericia(TipoPericia.Religiao, 5)],
             sentidos: [new Sentido(TipoSentido.VisaoNoEscuro, 18)],
             idiomas: [new Idioma("Os idiomas que conhecia em vida")],
+            tracos:
+            [
+                new Traco("Conjuração", "O senhor das múmias é um conjurador de 10° nível. Sua habilidade de conjuração é Sabedoria (CD de resistência de magia 17, +9 para atingir com ataques com magia). Ele possui as seguintes magias de clérigo preparadas:\nTruques (à vontade): chama sagrada, taumaturgia\n1° nível (4 espaços): comando, escudo da fé, raio teleguiado\n2° nível (3 espaços): arma espiritual, imobilizar pessoa, silêncio\n3° nível (3 espaços): animar mortos, dissipar magia\n4° nível (3 espaços): adivinhação, guardião da fé\n5° nível (2 espaços): praga, praga de insetos\n6° nível (1 espaço): ferimento pleno"),
+                new Traco("Rejuvenescimento", "Um senhor das múmias destruído adquire um novo corpo em 24 horas, se seu coração estiver intacto, recuperando todos os seus pontos de vida e se tornando ativo novamente. O novo corpo aparece a 1,5 metro do coração do senhor das múmias."),
+                new Traco("Resistência à Magia", "O senhor das múmias tem vantagem em testes de resistência contra magias e outros efeitos mágicos.")
+            ],
             nivelDeDesafio: new NivelDeDesafio(15),
             tipo: TipoCriatura.MortoVivo,
             tamanho: Tamanho.Medio
