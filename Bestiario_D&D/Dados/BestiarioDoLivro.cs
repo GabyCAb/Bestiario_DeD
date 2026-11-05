@@ -50,8 +50,7 @@ public static class BestiarioDoLivro
             acoes:
             [
                 new Acao("Mordida", "Ataque Corpo-a-Corpo com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 7 (1d8 + 3) de dano perfurante mais 7 (2d6) de dano de fogo."),
-                // TODO 2.3c: limite de uso (Recarrega 5–6)
-                new Acao("Sopro de Fogo", "O cão expele fogo num cone de 4,5 metros. Cada criatura na área deve realizar um teste de resistência de Destreza CD 12, sofrendo 21 (6d6) de dano de fogo se falhar na resistência, ou metade desse dano se obtiver sucesso.")
+                new Acao("Sopro de Fogo", "O cão expele fogo num cone de 4,5 metros. Cada criatura na área deve realizar um teste de resistência de Destreza CD 12, sofrendo 21 (6d6) de dano de fogo se falhar na resistência, ou metade desse dano se obtiver sucesso.", limiteDeUso: new Recarga(5))
             ],
             nivelDeDesafio: new NivelDeDesafio(3),
             tipo: TipoCriatura.Corruptor,
@@ -85,8 +84,7 @@ public static class BestiarioDoLivro
                 new Acao("Ataques Múltiplos", "O cavaleiro realiza dois ataques corpo-a-corpo."),
                 new Acao("Espada Grande", "Ataque Corpo-a-Corpo com Arma: +5 para atingir, alcance 1,5 m, um alvo. Acerto: 10 (2d6 + 3) de dano cortante."),
                 new Acao("Besta Pesada", "Ataque à Distância com Arma: +2 para atingir, distância 30/120 m, um alvo. Acerto: 5 (1d10) de dano perfurante."),
-                // TODO 2.3c: limite de uso (Recarrega após um Descanso Curto ou Longo)
-                new Acao("Liderança", "Por 1 minuto, o cavaleiro pode proferir um comando ou aviso especial para que qualquer criatura não-hostil que ele possa ver, a até 9 metros dele, realize uma jogada de ataque ou um teste de resistência. A criatura pode adicionar um d4 à jogada, considerando que ela possa ouvir e compreender o cavaleiro. Uma criatura pode ser beneficiada por apenas um dado de Liderança por vez. Esse efeito termina se o cavaleiro estiver incapacitado.")
+                new Acao("Liderança", "Por 1 minuto, o cavaleiro pode proferir um comando ou aviso especial para que qualquer criatura não-hostil que ele possa ver, a até 9 metros dele, realize uma jogada de ataque ou um teste de resistência. A criatura pode adicionar um d4 à jogada, considerando que ela possa ouvir e compreender o cavaleiro. Uma criatura pode ser beneficiada por apenas um dado de Liderança por vez. Esse efeito termina se o cavaleiro estiver incapacitado.", limiteDeUso: new RecargaAposDescanso(ApenasDescansoLongo: false))
             ],
             reacoes:
             [
@@ -190,8 +188,7 @@ public static class BestiarioDoLivro
             idiomas: [new Idioma("Comum"), new Idioma("Dracônico")],
             tracos:
             [
-                // TODO 2.3c: limite de uso (3/Dia)
-                new Traco("Resistência Lendária", "Se o dragão falhar em um teste de resistência, ele pode escolher obter sucesso, no lugar.")
+                new Traco("Resistência Lendária", "Se o dragão falhar em um teste de resistência, ele pode escolher obter sucesso, no lugar.", limiteDeUso: new UsosPorDia(3))
             ],
             acoes:
             [
@@ -200,8 +197,7 @@ public static class BestiarioDoLivro
                 new Acao("Garra", "Ataque Corpo-a-Corpo com Arma: +16 para atingir, alcance 3 m, um alvo. Acerto: 16 (2d6 + 9) de dano cortante."),
                 new Acao("Cauda", "Ataque Corpo-a-Corpo com Arma: +16 para atingir, alcance 6 m, um alvo. Acerto: 18 (2d8 + 9) de dano de concussão."),
                 new Acao("Presença Aterradora", "Cada criatura, à escolha do dragão, que esteja a até 36 metros do dragão e esteja ciente disso, deve ser bem sucedida num teste de resistência de Sabedoria CD 20 ou ficará amedrontada por 1 minuto. Uma criatura pode repetir o teste de resistência no final de cada um dos turnos dela, terminando o efeito sobre si, caso obtenha sucesso. Se o teste de resistência de uma criatura for bem sucedido ou caso o efeito termine sobre ela, a criatura ficará imune a Presença Aterradora do dragão pelas próximas 24 horas."),
-                // TODO 2.3c: limite de uso (Recarrega 5–6)
-                new Acao("Sopro Elétrico", "O dragão pode expelir eletricidade em uma linha com 36 metros de comprimento e 3 metros de largura. Cada criatura na linha deve ser bem sucedida num teste de resistência de Destreza CD 23, sofrendo 88 (16d10) de dano elétrico se falhar na resistência, ou metade desse dano caso obtenha sucesso.")
+                new Acao("Sopro Elétrico", "O dragão pode expelir eletricidade em uma linha com 36 metros de comprimento e 3 metros de largura. Cada criatura na linha deve ser bem sucedida num teste de resistência de Destreza CD 23, sofrendo 88 (16d10) de dano elétrico se falhar na resistência, ou metade desse dano caso obtenha sucesso.", limiteDeUso: new Recarga(5))
             ],
             nivelDeDesafio: new NivelDeDesafio(23),
             tipo: TipoCriatura.Dragao,

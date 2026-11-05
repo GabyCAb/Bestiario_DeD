@@ -75,7 +75,14 @@ public static class ExibicaoDeMonstro
         // foreach imprimindo "Nome. Descrição"
         foreach (var habilidade in habilidades)
         {
-            Console.WriteLine($"{habilidade.Nome}. {habilidade.Descricao}");
+            Console.Write(habilidade.Nome);   
+
+            if (habilidade.LimiteDeUso is not null)
+            {
+                Console.Write($" ({habilidade.LimiteDeUso})");    
+            }
+
+            Console.WriteLine($". {habilidade.Descricao}");
         }
     }
 
