@@ -27,6 +27,8 @@ public class Monstro
     public IReadOnlyList<Traco> Tracos { get; }
     public IReadOnlyList<Acao> Acoes { get; }
     public IReadOnlyList<Reacao> Reacoes { get; }
+    public string? IntroducaoAcoesLendarias { get; }
+    public IReadOnlyList<AcaoLendaria> AcoesLendarias { get; }
 
     public int PercepcaoPassiva
     {
@@ -59,7 +61,9 @@ public class Monstro
         IReadOnlyList<Idioma>? idiomas = null,
         IReadOnlyList<Traco>? tracos = null,
         IReadOnlyList<Acao>? acoes = null,
-        IReadOnlyList<Reacao>? reacoes = null
+        IReadOnlyList<Reacao>? reacoes = null,
+        string? introducaoAcoesLendarias = null,
+        IReadOnlyList<AcaoLendaria>? acoesLendarias = null
         )
     {
         if (string.IsNullOrWhiteSpace(nome))
@@ -99,6 +103,8 @@ public class Monstro
         Tracos = (tracos ?? []).ToList();
         Acoes = (acoes ?? []).ToList();
         Reacoes = (reacoes ?? []).ToList();
+        IntroducaoAcoesLendarias = introducaoAcoesLendarias;
+        AcoesLendarias = (acoesLendarias ?? []).ToList();
 
         // Regras que envolvem várias partes
         if (Sentidos.GroupBy(s => s.Tipo).Any(grupo => grupo.Count() > 1))
@@ -134,6 +140,21 @@ public class Monstro
         if (Reacoes.GroupBy(r => r.Nome).Any(grupo => grupo.Count() > 1))
         {
             throw new ArgumentException("Um monstro não pode ter a mesma reação mais de uma vez.");
+        }
+
+        if (AcoesLendarias.GroupBy(a => a.Nome).Any(grupo => grupo.Count() > 1))
+        {
+            throw new ArgumentException("Um monstro não pode ter a mesma ação lendária mais de uma vez.");
+        }
+
+        bool temIntroducao = !string.IsNullOrWhiteSpace(IntroducaoAcoesLendarias);
+        bool temAcoesLendarias = AcoesLendarias.Any();
+
+        if (temIntroducao != temAcoesLendarias)
+        {
+            throw new ArgumentException(
+                "A introdução e as ações lendárias devem ser informadas juntas: um monstro lendário precisa das duas; " +
+                "um monstro comum, de nenhuma.");
         }
     }
 }

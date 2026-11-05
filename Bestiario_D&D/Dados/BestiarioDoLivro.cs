@@ -199,6 +199,13 @@ public static class BestiarioDoLivro
                 new Acao("Presença Aterradora", "Cada criatura, à escolha do dragão, que esteja a até 36 metros do dragão e esteja ciente disso, deve ser bem sucedida num teste de resistência de Sabedoria CD 20 ou ficará amedrontada por 1 minuto. Uma criatura pode repetir o teste de resistência no final de cada um dos turnos dela, terminando o efeito sobre si, caso obtenha sucesso. Se o teste de resistência de uma criatura for bem sucedido ou caso o efeito termine sobre ela, a criatura ficará imune a Presença Aterradora do dragão pelas próximas 24 horas."),
                 new Acao("Sopro Elétrico", "O dragão pode expelir eletricidade em uma linha com 36 metros de comprimento e 3 metros de largura. Cada criatura na linha deve ser bem sucedida num teste de resistência de Destreza CD 23, sofrendo 88 (16d10) de dano elétrico se falhar na resistência, ou metade desse dano caso obtenha sucesso.", limiteDeUso: new Recarga(5))
             ],
+            introducaoAcoesLendarias: "O dragão pode realizar 3 ações lendárias, escolhidas dentre as opções abaixo. Apenas uma ação lendária pode ser usada por vez e apenas no final do turno de outra criatura. O dragão recupera as ações lendárias gastas no começo do turno dele.",
+            acoesLendarias:
+            [
+                new AcaoLendaria("Detectar", "O dragão realiza um teste de Sabedoria (Percepção)."),
+                new AcaoLendaria("Ataque com Cauda", "O dragão realiza um ataque de cauda."),
+                new AcaoLendaria("Ataque com Asas", "O dragão bate suas asas. Cada criatura a até 4,5 metros do dragão deve ser bem sucedida num teste de resistência de Destreza CD 24 ou sofrerá 16 (2d6 + 9) de dano de concussão e cairá no chão. Após bater suas asas, o dragão pode voar até metade do seu deslocamento de voo.", custo: 2)
+            ],
             nivelDeDesafio: new NivelDeDesafio(23),
             tipo: TipoCriatura.Dragao,
             tamanho: Tamanho.Imenso
@@ -331,6 +338,15 @@ public static class BestiarioDoLivro
                 new Acao("Ataques Múltiplos", "O senhor das múmias pode usar seu Olhar Desesperador e realiza um ataque com seu punho pútrido."),
                 new Acao("Punho Pútrido", "Ataque Corpo-a-Corpo com Arma: +9 para atingir, alcance 1,5 m, um alvo. Acerto: 14 (3d6 + 4) de dano de concussão mais 21 (6d6) de dano necrótico. Se o alvo for uma criatura, ele deve ser bem sucedido num teste de resistência de Constituição CD 16 ou será amaldiçoado com a podridão da múmia. O alvo amaldiçoado não pode recuperar pontos de vida e seu máximo de pontos de vida é reduzido em 10 (3d6) a cada 24 horas passadas. Se a maldição reduzir o máximo de pontos de vida do alvo a 0, ele morre e seu corpo se torna pó. A maldição dura até ser removida pela magia remover maldição ou mágica similar."),
                 new Acao("Olhar Desesperador", "O senhor das múmias afeta uma criatura que ele possa ver, a até 18 metros dele. Se o alvo puder ver a múmia, ele deve ser bem sucedido num teste de resistência de Sabedoria CD 16 contra essa magia, ou ficará amedrontado até o final do próximo turno da múmia. Se o alvo fracassar no teste de resistência por 5 ou mais, ele também fica paralisado pelo mesmo tempo. Um alvo que seja bem sucedido no teste de resistência fica imune ao Olhar Desesperador de todas as múmias e senhores das múmias pelas próximas 24 horas.")
+            ],
+            introducaoAcoesLendarias: "O senhor das múmias pode realizar 3 ações lendárias, escolhidas dentre as opções abaixo. Apenas uma ação lendária pode ser usada por vez e apenas no final do turno de outra criatura. O senhor das múmias recupera as ações lendárias gastas no começo do turno dele.",
+            acoesLendarias:
+            [
+                new AcaoLendaria("Ataque", "O senhor das múmias realiza um ataque com seu punho pútrido ou usa seu Olhar Desesperador."),
+                new AcaoLendaria("Poeira Cegante", "Poeira e areia cegantes rodopiam magicamente ao redor do senhor das múmias. Cada criatura a 1,5 metro dele deve ser bem sucedida num teste de resistência de Constituição CD 16 ou ficará cega até o final do próximo turno da criatura."),
+                new AcaoLendaria("Palavra Blasfema", "O senhor das múmias pronuncia uma palavra blasfema. Cada criatura não morta-viva a até 3 metros dele que puder ouvir a pronúncia mágica deve ser bem sucedida num teste de resistência de Constituição CD 16 ou ficará atordoada até o final do próximo turno do senhor das múmias.", custo: 2),
+                new AcaoLendaria("Canalizar Energia Negativa", "O senhor das múmias libera magicamente energia negativa. As criaturas a até 18 metros dele, incluindo as atrás de barreiras ou em esquinas, não podem recuperar pontos de vida até o final do próximo turno do senhor das múmias.", custo: 2),
+                new AcaoLendaria("Vendaval de Areia", "O senhor das múmias se transforma magicamente em um vendaval de areia, se movendo até 18 metros e voltando à sua forma normal. Enquanto estiver na forma de vendaval, ele é imune a todos os danos e não pode ser agarrado, petrificado, derrubado, impedido ou atordoado. O equipamento vestido ou carregado pelo senhor das múmias permanece em sua posse.", custo: 2)
             ],
             nivelDeDesafio: new NivelDeDesafio(15),
             tipo: TipoCriatura.MortoVivo,
