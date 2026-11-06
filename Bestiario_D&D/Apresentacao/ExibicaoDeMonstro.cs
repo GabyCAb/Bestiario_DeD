@@ -58,41 +58,29 @@ public static class ExibicaoDeMonstro
         ExibirSecao("AÇÕES LENDÁRIAS", monstro.AcoesLendarias, monstro.IntroducaoAcoesLendarias);
     }
 
-    // função para exibir uma seção de habilidades (traços, ações, reações...)
+    // Uma seção da parte de baixo da ficha: título (opcional), introdução (opcional) e as habilidades
     private static void ExibirSecao(string? titulo, IEnumerable<Habilidade> habilidades, string? introducao = null)
     {
-        // se não houver habilidades, sai do método sem imprimir nada
         if (!habilidades.Any())
         {
             return;
         }
-        // linha em branco
+
         Console.WriteLine();
-        // se houver título, imprime o título
+
         if (!string.IsNullOrWhiteSpace(titulo))
         {
             Console.WriteLine(titulo);
         }
-        // se houver introdução, imprime a introdução
+
         if (!string.IsNullOrWhiteSpace(introducao))
         {
             Console.WriteLine(introducao);
         }
 
-        // foreach imprimindo "Nome. Descrição"
         foreach (var habilidade in habilidades)
         {
-            Console.Write(habilidade.Nome);   
-
-            if (habilidade.LimiteDeUso is not null)
-            {
-                Console.Write($" ({habilidade.LimiteDeUso})");    
-            }
-            if (habilidade is AcaoLendaria lendaria && lendaria.Custo > 1)
-            {
-                Console.Write($" (Custa {lendaria.Custo} Ações)");
-            }
-            Console.WriteLine($". {habilidade.Descricao}");
+            Console.WriteLine($"{habilidade.Cabecalho}. {habilidade.Descricao}");
         }
     }
 

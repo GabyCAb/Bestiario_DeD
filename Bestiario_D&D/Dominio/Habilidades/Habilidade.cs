@@ -7,6 +7,7 @@ public abstract class Habilidade
     public string Nome { get; }
     public string Descricao { get; }
     public LimiteDeUso? LimiteDeUso { get; }
+    public virtual string Cabecalho => LimiteDeUso is null ? Nome : $"{Nome} ({LimiteDeUso})";
 
     protected Habilidade(string nome, string descricao, LimiteDeUso? limiteDeUso)
     {

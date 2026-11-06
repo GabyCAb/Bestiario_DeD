@@ -6,6 +6,8 @@ public sealed class AcaoLendaria : Habilidade
 {
     public int Custo { get; }
 
+    public override string Cabecalho => Custo > 1 ? $"{base.Cabecalho} (Custa {Custo} Ações)" : base.Cabecalho;
+
     public AcaoLendaria(string nome, string descricao, int custo = 1, LimiteDeUso? limiteDeUso = null) 
         : base(nome, descricao, limiteDeUso)
     {
